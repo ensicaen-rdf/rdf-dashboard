@@ -1,3 +1,7 @@
+.legend-violet {
+    color: #9368E9;
+}
+
 .tim-row {
     margin-bottom: 20px;
 }
@@ -560,6 +564,7 @@
         height: 640px;
         overflow: hidden;
     }
+
     .parallax .parallax-image img {
         height: 100%;
         width: auto;
@@ -623,10 +628,12 @@
 }
 
 @media (max-width: 768px) {
+
     .btn,
     .btn-morphing {
         margin-bottom: 10px;
     }
+
     .parallax .motto {
         top: 170px;
         margin-top: 0;

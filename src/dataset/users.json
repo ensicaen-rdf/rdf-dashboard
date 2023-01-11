@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Michel Dupont",
+    "age": 52,
+    "country": "Niger",
+    "city": "Bayeux"
+  },
+  {
+    "id": 2,
+    "name": "Etienne Demarre",
+    "age": 24,
+    "country": "Curaçao",
+    "city": "Brest"
+  },
+  {
+    "id": 3,
+    "name": "Serge Duchemin",
+    "age": 36,
+    "country": "Netherlands",
+    "city": "Strasbourg"
+  },
+  {
+    "id": 4,
+    "name": "Jeanne Chenet",
+    "age": "41",
+    "country": "Korea, South",
+    "city": "Auriac"
+  },
+  {
+    "id": 5,
+    "name": "Sophie Tuillier",
+    "age": 60,
+    "country": "Malawi",
+    "city": "Paris"
+  }
+]

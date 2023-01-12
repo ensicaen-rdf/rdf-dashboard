@@ -37,7 +37,6 @@
   </div>
 </template>
 <script>
-import usersList from "../dataset/users.json";
 import LTable from "src/components/Table.vue";
 import Card from "src/components/Cards/Card.vue";
 export default {
@@ -47,7 +46,7 @@ export default {
   },
   data() {
     return {
-      usersList: usersList,
+      usersList: [],
     };
   },
   methods: {
@@ -55,7 +54,7 @@ export default {
       let usersListCopy = [];
       usersListCopy = this.usersList;
       return usersListCopy.sort(function (a, b) {
-        return b.score - a.score;
+        //return b.score - a.score;
       });
     },
   },

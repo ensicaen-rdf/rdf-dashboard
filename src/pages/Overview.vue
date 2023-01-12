@@ -2,7 +2,7 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <p class="col-xl-3">{{ day }}</p>
+        <p class="col-xl-3">{{ day }} 2050</p>
       </div>
       <div class="row">
         <div class="col-xl-3 col-md-6">
@@ -142,10 +142,9 @@ import * as locale from "dayjs/locale/fr";
 import ChartCard from "src/components/Cards/ChartCard.vue";
 import StatsCard from "src/components/Cards/StatsCard.vue";
 import LTable from "src/components/Table.vue";
-import usersRanking from "../dataset/users.json";
 
 const tableColumns = ["Rang", "Nom", "Prenom", "Score", "Ville"];
-const tableData = usersRanking;
+const tableData = [];
 export default {
   components: {
     LTable,
@@ -154,7 +153,7 @@ export default {
   },
   data() {
     return {
-      day: dayjs().locale(locale).format("dddd, D MMMM YYYY"),
+      day: dayjs().locale(locale).format("D MMMM"),
       editTooltip: "Edit Task",
       deleteTooltip: "Remove",
       table1: {

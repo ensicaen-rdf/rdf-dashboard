@@ -104,7 +104,6 @@
   </div>
 </template>
 <script>
-  import usersList from '../dataset/users.json'
   import GeneralProfile from './UserProfile/GeneralProfile.vue'
   import PersonalProfile from './UserProfile/PersonalProfile.vue'
   import UserCard from './UserProfile/UserCard.vue'

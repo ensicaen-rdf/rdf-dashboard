@@ -2,23 +2,23 @@
   <div class="wrapper">
     <side-bar>
       <mobile-menu slot="content"></mobile-menu>
-      <sidebar-link to="/admin/overview">
+      <sidebar-link to="/dashboard/admin/overview">
         <i class="nc-icon nc-chart-pie-35"></i>
         <p>Dashboard</p>
       </sidebar-link>
-      <sidebar-link to="/admin/users-list">
+      <sidebar-link to="/dashboard/admin/users-list">
         <i class="nc-icon nc-notes"></i>
         <p>Annuaire</p>
       </sidebar-link>
-      <sidebar-link to="/admin/ranking">
+      <sidebar-link to="/dashboard/admin/ranking">
         <i class="nc-icon nc-chart-bar-32"></i>
         <p>Classement</p>
       </sidebar-link>
-      <sidebar-link to="/admin/notifications">
+      <sidebar-link to="/dashboard/admin/notifications">
         <i class="nc-icon nc-bell-55"></i>
         <p>Tickets</p>
       </sidebar-link>
-      <sidebar-link to="/admin/maps">
+      <sidebar-link to="/dashboard/admin/maps">
         <i class="nc-icon nc-pin-3"></i>
         <p>Maps</p>
       </sidebar-link>
@@ -39,6 +39,7 @@ import TopNavbar from "./TopNavbar.vue";
 import ContentFooter from "./ContentFooter.vue";
 import DashboardContent from "./Content.vue";
 import MobileMenu from "./MobileMenu.vue";
+import axios from "axios";
 export default {
   components: {
     TopNavbar,
@@ -52,6 +53,6 @@ export default {
         this.$sidebar.displaySidebar(false);
       }
     },
-  },
+  }
 };
 </script>

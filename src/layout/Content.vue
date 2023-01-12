@@ -4,7 +4,34 @@
   </transition>
 </template>
 <script>
-  export default {}
+  import axios from "axios";
+
+  export default {
+    data () {
+      return {
+        usersList: [],
+        usersRank: []
+      }
+    },
+    methods: {
+      retrieveUsers: function () {
+        axios.get("http://192.168.3.111:3000/api/people")
+          .then((response) => {
+            this.usersList = response.data;
+            this.usersRank = JSON.parse(JSON.stringify(response.data));
+            this.usersRank.sort(function (a, b) {
+              return b.score - a.score;
+            });
+          })
+          .catch((errors) => {
+            console.log(errors);
+          });
+      },
+    },
+    mounted() {
+      this.retrieveUsers();
+    }
+  }
 </script>
 <style>
   .fade-enter-active,

@@ -1,15 +1,12 @@
 <template>
   <div class="content">
-    <!-- <div>
-      <input type="text" v-model="search" placeholder="Search" />
-      <a href="#">
-        <i class="nc-icon nc-zoom-split"></i>
-        <span>&nbsp;Search</span>
-      </a>
-      <br />
-    </div>-->
     <div class="container-fluid">
-      <table class="table table-striped">
+      <h2>Classement</h2>
+      <div class="alert alert-danger" role="alert" v-if="this.$parent.usersRank.length === 0">
+        Aucun citoyen trouvé...
+      </div>
+
+      <table class="table table-striped" v-else>
         <thead>
           <tr>
             <th scope="col">Rang</th>
@@ -21,13 +18,13 @@
         </thead>
         <tbody>
           <tr
-            v-for="(user, index) in usersListRank()"
+            v-for="(user, index) in this.$parent.usersRank"
             :key="user.id"
             v-on:click="$router.push('/admin/user/' + user.id.toString())"
           >
             <th scope="row">{{ index + 1 }}</th>
-            <td>{{ user.lastname }}</td>
-            <td>{{ user.firstname }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.firstNames.split(" ")[0] }}</td>
             <td>{{ user.score }}</td>
             <td>{{ user.city }}</td>
           </tr>
@@ -43,23 +40,6 @@ export default {
   components: {
     LTable,
     Card,
-  },
-  data() {
-    return {
-      usersList: [],
-    };
-  },
-  methods: {
-    usersListRank: function () {
-      let usersListCopy = [];
-      usersListCopy = this.usersList;
-      return usersListCopy.sort(function (a, b) {
-        //return b.score - a.score;
-      });
-    },
-  },
-  mounted() {
-    this.usersListRank();
   },
 };
 </script>

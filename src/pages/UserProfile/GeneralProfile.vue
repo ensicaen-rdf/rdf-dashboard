@@ -23,11 +23,11 @@
           </base-input>
         </div>
         <div class="col-md-4">
-          <base-input type="number"
+          <base-input type="text"
                       label="Code postal"
                       :disabled="true"
                       placeholder="Code postal"
-                      v-model="user.zipCode">
+                      v-model="zipCode">
           </base-input>
         </div>
         <div class="col-md-4">
@@ -45,7 +45,7 @@
                       label="Lieu de travail"
                       :disabled="true"
                       placeholder="Lieu de travail"
-                      v-model="user.workplace">
+                      v-model="user.placeOfWork">
           </base-input>
         </div>
       </div>
@@ -56,12 +56,27 @@
 </template>
 <script>
   import Card from 'src/components/Cards/Card.vue'
+  import vicopo from "vicopo";
 
   export default {
     components: {
       Card
     },
+    data() {
+      return {
+        zipCode: "N/A"
+      }
+    },
     props: ["user"],
+    mounted() {
+      vicopo(this.user.city, function (err, cities) {
+        if(err) {
+          throw err;
+        } else {
+          this.zipCode = cities[0].code;
+        }
+      });
+    }
   }
 
 </script>

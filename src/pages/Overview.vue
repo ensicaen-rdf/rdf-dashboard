@@ -99,12 +99,37 @@
                 d'électricité
               </p>
             </template>
-            <l-table
-              class="table-hover table-striped"
-              :columns="table1.columns"
-              :data="table1.data"
-            >
-            </l-table>
+            <div class="container-fluid">
+              <div class="alert alert-danger" role="alert" v-if="this.$parent.usersRank.length === 0">
+                Aucun citoyen trouvé...
+              </div>
+              <table class="table table-striped" v-else>
+                <thead>
+                  <tr>
+                    <th scope="col">Rang</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Score</th>
+                    <th scope="col">Ville</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(user, index) in this.$parent.usersRank"
+                    :key="user.id"
+                    v-on:click="
+                      $router.push('/admin/user/' + user.id.toString())
+                    "
+                  >
+                    <th scope="row">{{ index + 1 }}</th>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.firstNames.split(" ")[0] }}</td>
+                    <td>{{ user.score }}</td>
+                    <td>{{ user.city }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </card>
         </div>
       </div>
@@ -142,9 +167,6 @@ import * as locale from "dayjs/locale/fr";
 import ChartCard from "src/components/Cards/ChartCard.vue";
 import StatsCard from "src/components/Cards/StatsCard.vue";
 import LTable from "src/components/Table.vue";
-
-const tableColumns = ["Rang", "Nom", "Prenom", "Score", "Ville"];
-const tableData = [];
 export default {
   components: {
     LTable,
@@ -156,10 +178,6 @@ export default {
       day: dayjs().locale(locale).format("D MMMM"),
       editTooltip: "Edit Task",
       deleteTooltip: "Remove",
-      table1: {
-        columns: [...tableColumns],
-        data: [...tableData],
-      },
       lineChart: {
         data: {
           labels: [

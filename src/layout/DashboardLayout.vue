@@ -39,7 +39,6 @@ import TopNavbar from "./TopNavbar.vue";
 import ContentFooter from "./ContentFooter.vue";
 import DashboardContent from "./Content.vue";
 import MobileMenu from "./MobileMenu.vue";
-import axios from "axios";
 export default {
   components: {
     TopNavbar,

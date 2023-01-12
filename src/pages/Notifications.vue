@@ -1,131 +1,117 @@
 <template>
   <div class="content">
-    <div class="container-fluid">
+    <div class="col-md-12">
       <card>
-        <div class="row">
-          <div class="col-md-6">
-            <h5>Notifications Style</h5>
-            <div class="alert alert-info">
-              <span>This is a plain notification</span>
-            </div>
-            <div class="alert alert-info">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
-                <i class="nc-icon nc-simple-remove"></i>
-              </button>
-              <span>This is a notification with close button.</span>
-            </div>
-            <div class="alert alert-info alert-with-icon" data-notify="container">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
-                <i class="nc-icon nc-simple-remove"></i>
-              </button>
-              <span data-notify="icon" class="nc-icon nc-app"></span>
-              <span data-notify="message">This is a notification with close button and icon.</span>
-            </div>
-            <div class="alert alert-info alert-with-icon" data-notify="container">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
-                <i class="nc-icon nc-simple-remove"></i>
-              </button>
-              <span data-notify="icon" class="nc-icon nc-app"></span>
-              <span data-notify="message">This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style.</span>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <h5>Notification states</h5>
-            <div class="alert alert-info">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
-                <i class="nc-icon nc-simple-remove"></i>
-              </button>
-              <span><b> Info - </b> This is a regular notification made with ".alert-info"</span>
-            </div>
-            <div class="alert alert-success">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
-                <i class="nc-icon nc-simple-remove"></i>
-              </button>
-              <span><b> Success - </b> This is a regular notification made with ".alert-success"</span>
-            </div>
-            <div class="alert alert-warning">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
-                <i class="nc-icon nc-simple-remove"></i>
-              </button>
-              <span><b> Warning - </b> This is a regular notification made with ".alert-warning"</span>
-            </div>
-            <div class="alert alert-danger">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
-                <i class="nc-icon nc-simple-remove"></i>
-              </button>
-              <span><b> Danger - </b> This is a regular notification made with ".alert-danger"</span>
-            </div>
-          </div>
-        </div>
-        <br>
-        <br>
-        <div class="places-buttons">
-          <div class="row justify-content-center">
-            <div class="col-6 text-center">
-              <h5>Notifications Places
-                <p class="category">Click to view notifications</p>
-              </h5>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <div class="col-md-3 col-md-offset-1">
-              <button class="btn btn-default btn-block" @click="notifyVue('top', 'left')">Top Left</button>
-            </div>
-            <div class="col-md-3">
-              <button class="btn btn-default btn-block" @click="notifyVue('top', 'center')">Top Center</button>
-            </div>
-            <div class="col-md-3">
-              <button class="btn btn-default btn-block" @click="notifyVue('top', 'right')">Top Right</button>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <div class="col-md-3 col-md-offset-1">
-              <button class="btn btn-default btn-block" @click="notifyVue('bottom', 'left')">Bottom Left</button>
-            </div>
-            <div class="col-md-3">
-              <button class="btn btn-default btn-block" @click="notifyVue('bottom', 'center')">Bottom Center</button>
-            </div>
-            <div class="col-md-3">
-              <button class="btn btn-default btn-block" @click="notifyVue('bottom', 'right')">Bottom Right</button>
-            </div>
+        <template slot="header">
+          <h2 class="title">Validation des dénonciations des citoyens</h2>
+          <p class="category-denonce">
+            En vertu de la loi, article 226-10 : La dénonciation, effectuée par
+            tout moyen et dirigée contre une personne déterminée, d'un fait qui
+            est de nature à entraîner des sanctions, lorsqu'elle est adressée à
+            une autorité ayant le pouvoir d'y donner suite. La fausseté du fait
+            dénoncé résulte nécessairement de la décision, devenue définitive,
+            d'acquittement, de relaxe ou de non-lieu, déclarant que le fait n'a
+            pas été commis ou que celui-ci n'est pas imputable à la personne
+            dénoncée. En tout autre cas, le tribunal saisi des poursuites contre
+            le dénonciateur apprécie la pertinence des accusations portées par
+            celui-ci.
+          </p>
+        </template>
+        <l-table :data="tableData.data" :columns="tableData.columns">
+          <template slot="columns"></template>
 
-          </div>
-        </div>
+          <template slot-scope="{ row }">
+            <td>
+              Dénonciations de {{ row.from }} à l'encontre de {{ row.target }},
+              pour {{ row.reason }}
+            </td>
+            <td class="td-actions text-right">
+              <button
+                type="button"
+                class="btn-simple btn btn-success"
+                v-tooltip.top-center="editTooltip"
+              >
+                <i class="fa fa-check"></i>
+              </button>
+              <button
+                type="button"
+                class="btn-simple btn btn-danger"
+                v-tooltip.top-center="deleteTooltip"
+              >
+                <i class="fa fa-times"></i>
+              </button>
+            </td>
+          </template>
+        </l-table>
       </card>
     </div>
   </div>
 </template>
 <script>
-  import Card from 'src/components/Cards/Card.vue'
+import ChartCard from "src/components/Cards/ChartCard.vue";
+import StatsCard from "src/components/Cards/StatsCard.vue";
+import LTable from "src/components/Table.vue";
 
-  export default {
-    components: {
-      Card
-    },
-    data () {
-      return {
-        type: ['', 'info', 'success', 'warning', 'danger'],
-        notifications: {
-          topCenter: false
-        }
-      }
-    },
-    methods: {
-      notifyVue (verticalAlign, horizontalAlign) {
-        const color = Math.floor((Math.random() * 4) + 1)
-        this.$notifications.notify(
+export default {
+  components: {
+    LTable,
+    ChartCard,
+    StatsCard,
+  },
+  data() {
+    return {
+      tableData: {
+        data: [
           {
-            message: `<span>Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer.</span>`,
-            icon: 'nc-icon nc-app',
-            horizontalAlign: horizontalAlign,
-            verticalAlign: verticalAlign,
-            type: this.type[color]
-          })
-      }
-    }
-  }
-
+            from: "Marie Dupont",
+            target: "Jean-Luc Verie",
+            reason:
+              'Sign contract for "What are conference organizers afraid of?"',
+          },
+          {
+            from: "Geannie Weasley",
+            target: "Ron Weasley",
+            reason:
+              "Lines From Great Russian Literature? Or E-mails From My Boss?",
+          },
+          {
+            from: "Veronique Martin",
+            target: "Pierre Dublin",
+            reason:
+              "Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit",
+          },
+          {
+            from: "Miles Perso",
+            target: "Karen Test",
+            reason: "Create 4 Invisible User Experiences you Never Knew About",
+          },
+          {
+            from: "Matthieu Broue",
+            target: "Virginie LeTest",
+            reason: 'Read "Following makes Medium better"',
+          },
+          {
+            from: "Grégorie Jardin",
+            target: "Jean Marchal",
+            reason: "Unfollow 5 enemies from twitter",
+          },
+        ],
+      },
+    };
+  },
+  methods: {
+    notifyVue(verticalAlign, horizontalAlign) {
+      const color = Math.floor(Math.random() * 4 + 1);
+      this.$notifications.notify({
+        message: `<span>Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer.</span>`,
+        icon: "nc-icon nc-app",
+        horizontalAlign: horizontalAlign,
+        verticalAlign: verticalAlign,
+        type: this.type[color],
+      });
+    },
+  },
+};
 </script>
 <style lang="scss">
-
 </style>

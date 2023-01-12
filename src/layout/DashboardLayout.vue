@@ -18,10 +18,6 @@
         <i class="nc-icon nc-bell-55"></i>
         <p>Tickets</p>
       </sidebar-link>
-      <sidebar-link to="/admin/maps">
-        <i class="nc-icon nc-pin-3"></i>
-        <p>Maps</p>
-      </sidebar-link>
     </side-bar>
     <div class="main-panel">
       <top-navbar></top-navbar>

@@ -1,18 +1,22 @@
 <template>
   <footer class="footer">
     <div class="container-fluid">
-      <nav>
-        <ul class="footer-menu">
-          <li>
-            <router-link :to="{path:'/admin'}">Dashboard</router-link>
-          </li>
-        </ul>
-      </nav>
-      <div class="copyright text-center">
-        &copy; Coded with
-        <i class="fa fa-heart heart"></i> by
-        <a href="https://binarcode.com" target="_blank">BinarCode</a>.
-        Designed by <a href="https://www.creative-tim.com/?ref=pdf-vuejs" target="_blank">Creative Tim</a>.
+      <div class="row">
+        <div class="col-md-1 m-3">
+          <img slot="image" src="img/logo-gouv.png" alt="gouv" style="width: 100%"/>
+        </div>
+        <div class="col-md">
+          <nav>
+            <ul class="footer-menu">
+              <li>
+                <router-link to="/dashboard/admin">Dashboard</router-link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-md-1 m-3">
+          <img src="img/logo.png" alt="CSSE" style="width: 100%">
+        </div>
       </div>
     </div>
   </footer>

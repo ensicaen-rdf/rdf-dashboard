@@ -14,6 +14,12 @@
           :url="url"
         >
         </l-tile-layer>
+        <l-marker
+          v-for="marker in this.markers"
+          :key="marker.id"
+          :lat-lng="marker.coordinates"
+        >
+        </l-marker>
       </l-map>
     </div>
   </div>
@@ -33,6 +39,9 @@ export default {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       center: [ 49.1193089, 6.1757156 ],
       zoom: 12,
+      markers: [
+        {id: 1, coordinates: [ 49.114910, 6.178810 ]},
+      ]
     }
   },
   methods: {

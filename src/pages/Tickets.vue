@@ -104,7 +104,7 @@ export default {
       let data = {
         idReport: id,
         isValid: state,
-        nbPoints: 0
+        nbPoints: 10
       }
       axios.post("https://intensif06.ensicaen.fr/api/report/validate", data)
         .then(() => {

@@ -18,7 +18,8 @@
     "weight": 75,
     "diseases": "N/A",
     "bloodType": "A",
-    "rhesus": "+"
+    "rhesus": "+",
+    "score": 1700
 
   },
   {
@@ -40,7 +41,8 @@
     "weight": 75,
     "diseases": "N/A",
     "bloodType": "A",
-    "rhesus": "+"
+    "rhesus": "+",
+    "score": 1423
   },
   {
     "id": 3,
@@ -61,7 +63,8 @@
     "weight": 75,
     "diseases": "N/A",
     "bloodType": "A",
-    "rhesus": "+"
+    "rhesus": "+",
+    "score": 1250
   },
   {
     "id": 4,
@@ -82,7 +85,8 @@
     "weight": 75,
     "diseases": "N/A",
     "bloodType": "A",
-    "rhesus": "+"
+    "rhesus": "+",
+    "score": 1845
   },
   {
     "id": 5,
@@ -103,6 +107,7 @@
     "weight": 75,
     "diseases": "N/A",
     "bloodType": "A",
-    "rhesus": "+"
+    "rhesus": "+",
+    "score": 1543
   }
 ]

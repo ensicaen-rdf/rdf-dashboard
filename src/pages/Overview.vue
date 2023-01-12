@@ -12,7 +12,7 @@
             </div>
             <div slot="content">
               <p class="card-category">Production d'électricité</p>
-              <h4 class="card-title">70 GWh</h4>
+              <h4 class="card-title">68 GWh</h4>
             </div>
             <div slot="footer"><i class="fa fa-calendar"></i> Sur 30 jours glissants</div>
           </stats-card>
@@ -25,7 +25,7 @@
             </div>
             <div slot="content">
               <p class="card-category">Consommation d'électricité</p>
-              <h4 class="card-title">35910 GWh</h4>
+              <h4 class="card-title">458 GWh</h4>
             </div>
             <div slot="footer"><i class="fa fa-calendar"></i> Sur 30 jours glissants</div>
           </stats-card>
@@ -40,7 +40,7 @@
               <p class="card-category">
                 Production moyenne d'électricité par foyer
               </p>
-              <h4 class="card-title">90 kWh</h4>
+              <h4 class="card-title">77 kWh</h4>
             </div>
             <div slot="footer"><i class="fa fa-calendar"></i> Sur 30 jours glissants</div>
           </stats-card>
@@ -55,9 +55,9 @@
               <p class="card-category">
                 Consommation moyenne d'électricité par foyer
               </p>
-              <h4 class="card-title">390 kWh</h4>
+              <h4 class="card-title">489 kWh</h4>
             </div>
-            <div slot="footer"><i class="fa fa-calendar"></i> Sur 30 jours glissants</div>
+            <div slot="footer"><i class="fa fa-calendar"></i> Sur 30 jours glissants (en kWh)</div>
           </stats-card>
         </div>
       </div>
@@ -144,7 +144,7 @@
               <h4 class="card-title">
                 Consommation et production électrique en France sur l'année en cours
               </h4>
-              <p class="card-category">Résultat sur 12 mois glissants</p>
+              <p class="card-category">Résultat sur 12 mois glissants (en kWh)</p>
             </template>
             <template slot="footer">
               <div class="legend">
@@ -195,18 +195,16 @@ export default {
           ],
           series: [
             [
-              230, 1130, 670, 1080, 1900, 2390, 3070, 3080, 1130, 670, 1080,
-              1900,
+              914, 882, 863, 835, 849, 832, 815, 775, 729, 614, 683, 577
             ],
             [
-              1020, 2560, 3400, 2100, 2500, 2680, 3800, 4000, 1020, 2560, 3400,
-              2100,
+              3332, 3241, 3131, 3033, 3015, 2929, 2824, 2724, 2721, 2815, 2811, 2702,
             ],
           ],
         },
         options: {
           low: 0,
-          high: 5000,
+          high: 3500,
           showArea: false,
           height: "250px",
           axisX: {
@@ -251,18 +249,16 @@ export default {
           ],
           series: [
             [
-              8500, 8600, 8900, 8500, 7700, 8000, 7500, 7000, 7200, 7600, 7800,
-              8000,
+              914, 882, 863, 835, 849, 832, 815, 775, 729, 614, 683, 577
             ],
             [
-              18500, 18600, 18900, 18500, 17700, 18000, 17500, 17000, 17200,
-              17600, 17800, 18000,
+              3332, 3241, 3131, 3033, 3015, 2929, 2824, 2724, 2721, 2815, 2811, 2702,
             ],
           ],
         },
         options: {
           low: 0,
-          high: 20000,
+          high: 3500,
           showArea: false,
           height: "250px",
           axisX: {

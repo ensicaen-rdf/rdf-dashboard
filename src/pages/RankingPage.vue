@@ -19,8 +19,9 @@
         <tbody>
           <tr
             v-for="(user, index) in this.$parent.usersRank"
-            :key="user.id"
-            v-on:click="$router.push('/admin/user/' + user.id.toString())"
+            :key="user.idPerson"
+            v-on:click="$router.push('/admin/user/' + user.idPerson.toString())"
+            style="cursor: pointer;"
           >
             <th scope="row">{{ index + 1 }}</th>
             <td>{{ user.lastName }}</td>

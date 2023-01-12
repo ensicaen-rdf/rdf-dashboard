@@ -17,7 +17,7 @@
                       :responsive-options="lineChart.responsiveOptions">
             <template slot="header">
               <h4 class="card-title">24H</h4>
-              <p class="card-category">Production et consommation d'électricité des dernières 24 heures</p>
+              <p class="card-category">Production et consommation d'électricité des dernières 24 heures (en kWh)</p>
             </template>
             <template slot="footer">
               <div class="legend">
@@ -36,7 +36,7 @@
           <chart-card :chart-data="pieChartWeek.data" chart-type="Pie">
             <template slot="header">
               <h4 class="card-title">7 jours</h4>
-              <p class="card-category">Production et consommation d'électricité sur 7 jours glissants</p>
+              <p class="card-category">Production et consommation d'électricité sur 7 jours glissants (en kWh)</p>
             </template>
             <template slot="footer">
               <div class="legend">
@@ -60,7 +60,7 @@
             chart-type="Bar">
             <template slot="header">
               <h4 class="card-title">2050</h4>
-              <p class="card-category">Production et consommation d'électricité sur l'année 2050</p>
+              <p class="card-category">Production et consommation d'électricité sur l'année 2050 (en kWh)</p>
             </template>
             <template slot="footer">
               <div class="legend">
@@ -79,7 +79,7 @@
           <chart-card :chart-data="pieChartMonth.data" chart-type="Pie">
             <template slot="header">
               <h4 class="card-title">30 jours</h4>
-              <p class="card-category">Production et consommation d'électricité sur 30 jours glissants</p>
+              <p class="card-category">Production et consommation d'électricité sur 30 jours glissants (en kWh)</p>
             </template>
             <template slot="footer">
               <div class="legend">
@@ -148,13 +148,17 @@
           data: {
             labels: ['9:00', '12:00', '15:00', '18:00', '21:00', '00:00', '3:00', '6:00'],
             series: [
-              [287, 385, 490, 492, 554, 586, 698, 695],
-              [67, 152, 143, 240, 287, 335, 435, 437],
+              [
+                0.16, 0.89, 0.24, 0.75, 0.64, 0, 0, 0,
+              ],
+              [
+                0.09, 0.26, 0.1, 0.18, 0.12, 0, 0.02, 0,
+              ],
             ]
           },
           options: {
             low: 0,
-            high: 800,
+            high: 1,
             showArea: false,
             height: '245px',
             axisX: {
@@ -182,8 +186,12 @@
           data: {
             labels: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jui', 'Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
             series: [
-              [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895].reverse(),
-              [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695].reverse()
+              [
+                1332, 1241, 1131, 1033, 1015, 929, 824, 724, 721, 815, 811, 702,
+              ],
+              [
+                614, 582, 563, 535, 549, 532, 515, 475, 429, 314, 383, 277
+              ],
             ]
           },
           options: {
@@ -206,14 +214,14 @@
         },
         pieChartWeek: {
           data: {
-            labels: ['42 kWh', '14 kWh'],
-            series: [42, 14]
+            labels: ['42 kWh', '8 kWh'],
+            series: [42, 8]
           }
         },
         pieChartMonth: {
           data: {
-            labels: ['420 kWh', '140 kWh'],
-            series: [420, 140]
+            labels: ['191 kWh', '48 kWh'],
+            series: [191, 48]
           }
         }
       }

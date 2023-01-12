@@ -11,14 +11,17 @@
           <table class="table table-striped" v-else>
             <thead>
             <tr>
-              <th scope="col" class="col-md-3">#</th>
+              <th scope="col" class="col-md-3">ID National</th>
               <th scope="col" class="col-md-3">Nom</th>
               <th scope="col" class="col-md-3">Prénom</th>
               <th scope="col" class="col-md-3">Ville</th>
             </tr>
             </thead>
             <tbody>
-              <tr v-for="user in this.$parent.usersList" :key="user.id" v-on:click="$router.push('/admin/user/' + user.idPerson.toString())">
+              <tr v-for="user in this.$parent.usersList" :key="user.idPerson"
+                  v-on:click="$router.push('/admin/user/' + user.idPerson.toString())"
+                  style="cursor: pointer;"
+              >
                 <th scope="row">{{ user.nationalId }}</th>
                 <td>{{ user.lastName }}</td>
                 <td>{{ user.firstNames.split(" ")[0] }}</td>

@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     retrieveTickets: function () {
-      axios.get("https://intensif06.ensicaen.fr/api/report/all")
+      axios.get("https://intensif06.ensicaen.fr/api/report")
         .then((response) => {
           let ticketsList = response.data;
           for(let i = 0; i < ticketsList.length; i++) {
@@ -108,7 +108,10 @@ export default {
       }
       axios.post("https://intensif06.ensicaen.fr/api/report/validate", data)
         .then(() => {
-          this.tickets = this.tickets.splice(index, 1);
+          if(this.tickets.length > 1)
+            this.tickets = this.tickets.splice(index, 1);
+          else
+            this.tickets = [];
         })
         .catch((errors) => {
           console.log(errors);

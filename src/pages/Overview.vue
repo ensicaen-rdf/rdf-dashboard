@@ -99,12 +99,34 @@
                 d'électricité
               </p>
             </template>
-            <l-table
-              class="table-hover table-striped"
-              :columns="table1.columns"
-              :data="table1.data"
-            >
-            </l-table>
+            <div class="container-fluid">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Rang</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Score</th>
+                    <th scope="col">Ville</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(user, index) in usersRank"
+                    :key="user.id"
+                    v-on:click="
+                      $router.push('/admin/user/' + user.id.toString())
+                    "
+                  >
+                    <th scope="row">{{ index + 1 }}</th>
+                    <td>{{ user.lastname }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.score }}</td>
+                    <td>{{ user.city }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </card>
         </div>
       </div>
@@ -142,10 +164,8 @@ import * as locale from "dayjs/locale/fr";
 import ChartCard from "src/components/Cards/ChartCard.vue";
 import StatsCard from "src/components/Cards/StatsCard.vue";
 import LTable from "src/components/Table.vue";
-import usersRanking from "../dataset/users.json";
+import usersList from "../dataset/users.json";
 
-const tableColumns = ["Rang", "Nom", "Prenom", "Score", "Ville"];
-const tableData = usersRanking;
 export default {
   components: {
     LTable,
@@ -157,10 +177,7 @@ export default {
       day: dayjs().locale(locale).format("dddd, D MMMM YYYY"),
       editTooltip: "Edit Task",
       deleteTooltip: "Remove",
-      table1: {
-        columns: [...tableColumns],
-        data: [...tableData],
-      },
+      usersRank: [],
       lineChart: {
         data: {
           labels: [
@@ -274,6 +291,18 @@ export default {
         ],
       },
     };
+  },
+  methods: {
+    usersListRank: function () {
+      //let usersListCopy = [];
+      this.usersRank = JSON.parse(JSON.stringify(usersList));
+      this.usersRank.sort(function (a, b) {
+        return b.score - a.score;
+      });
+    },
+  },
+  mounted() {
+    this.usersListRank();
   },
 };
 </script>

@@ -11,10 +11,10 @@
               <img src="../assets/img/industry-icon.png" />
             </div>
             <div slot="content">
-              <p class="card-category">Production mensuel d'électricité</p>
+              <p class="card-category">Production d'électricité</p>
               <h4 class="card-title">70 GWh</h4>
             </div>
-            <div slot="footer"><i class="fa fa-refresh"></i>Actualiser</div>
+            <div slot="footer"><i class="fa fa-calendar"></i> Sur 30 jours glissants</div>
           </stats-card>
         </div>
 
@@ -24,10 +24,10 @@
               <img src="../assets/img/electricity-icon.png" />
             </div>
             <div slot="content">
-              <p class="card-category">Consommation mensuel d'électricité</p>
+              <p class="card-category">Consommation d'électricité</p>
               <h4 class="card-title">35910 GWh</h4>
             </div>
-            <div slot="footer"><i class="fa fa-refresh"></i>Actualiser</div>
+            <div slot="footer"><i class="fa fa-calendar"></i> Sur 30 jours glissants</div>
           </stats-card>
         </div>
 
@@ -42,7 +42,7 @@
               </p>
               <h4 class="card-title">90 kWh</h4>
             </div>
-            <div slot="footer"><i class="fa fa-refresh"></i>Actualiser</div>
+            <div slot="footer"><i class="fa fa-calendar"></i> Sur 30 jours glissants</div>
           </stats-card>
         </div>
 
@@ -57,7 +57,7 @@
               </p>
               <h4 class="card-title">390 kWh</h4>
             </div>
-            <div slot="footer"><i class="fa fa-refresh"></i>Actualiser</div>
+            <div slot="footer"><i class="fa fa-calendar"></i> Sur 30 jours glissants</div>
           </stats-card>
         </div>
       </div>
@@ -70,10 +70,10 @@
           >
             <template slot="header">
               <h4 class="card-title">
-                Evolution de la consommation et production électrique moyenne
-                par foyer depuis janvier
+                Consommation et production électrique moyenne
+                par foyer sur l'année en cours
               </h4>
-              <p class="card-category">Résultat mensuel</p>
+              <p class="card-category">Résultat sur 12 mois glissants</p>
             </template>
             <template slot="footer">
               <div class="legend">
@@ -142,10 +142,9 @@
           >
             <template slot="header">
               <h4 class="card-title">
-                Evolution de la consommation et production électrique en France
-                depuis janvier
+                Consommation et production électrique en France sur l'année en cours
               </h4>
-              <p class="card-category">Résultat mensuel</p>
+              <p class="card-category">Résultat sur 12 mois glissants</p>
             </template>
             <template slot="footer">
               <div class="legend">

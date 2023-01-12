@@ -14,7 +14,7 @@
         <i class="nc-icon nc-chart-bar-32"></i>
         <p>Classement</p>
       </sidebar-link>
-      <sidebar-link to="/admin/notifications">
+      <sidebar-link to="/admin/tickets">
         <i class="nc-icon nc-bell-55"></i>
         <p>Tickets</p>
       </sidebar-link>

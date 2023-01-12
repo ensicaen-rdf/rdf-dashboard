@@ -15,21 +15,20 @@
         <span class="navbar-toggler-bar burger-lines"></span>
         <span class="navbar-toggler-bar burger-lines"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end">
+
+
+
+      <div class="collapse navbar-collapse justify-content-end ml-5">
         <ul class="nav navbar-nav mr-auto">
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nc-icon nc-zoom-split"></i>
-              <span class="d-lg-block">&nbsp;Search</span>
+            <a href="#" class="nav-link mt-3">
+              <i class="nc-icon nc-zoom-split mt-2"></i>
+              <base-input class="ml-2"
+                          type="text"
+                          placeholder="Search"
+                          v-model="search">
+              </base-input>
             </a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#"> Account </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link"> Log out </a>
           </li>
         </ul>
       </div>
@@ -47,6 +46,7 @@ export default {
   data() {
     return {
       activeNotifications: false,
+      search: ''
     };
   },
   methods: {

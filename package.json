@@ -25,6 +25,7 @@
     "vicopo": "^1.2.1",
     "vue": "^2.6.11",
     "vue-router": "3.0.2",
+    "vue-search-input": "^1.1.11",
     "vue2-google-maps": "0.10.7",
     "vue2-leaflet": "^2.7.1"
   },

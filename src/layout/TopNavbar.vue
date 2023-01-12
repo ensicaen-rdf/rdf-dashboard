@@ -16,9 +16,7 @@
         <span class="navbar-toggler-bar burger-lines"></span>
       </button>
 
-
-
-      <div class="collapse navbar-collapse justify-content-end ml-5">
+      <!--<div class="collapse navbar-collapse justify-content-end ml-5">
         <ul class="nav navbar-nav mr-auto">
           <li class="nav-item">
             <a href="#" class="nav-link mt-3">
@@ -31,11 +29,12 @@
             </a>
           </li>
         </ul>
-      </div>
+      </div>-->
     </div>
   </nav>
 </template>
 <script>
+
 export default {
   computed: {
     routeName() {
@@ -46,7 +45,8 @@ export default {
   data() {
     return {
       activeNotifications: false,
-      search: ''
+      search: '',
+      results: []
     };
   },
   methods: {

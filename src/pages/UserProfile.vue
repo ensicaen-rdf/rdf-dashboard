@@ -26,7 +26,7 @@
               </div>
               <hr>
               <div class="stats">
-                <i class="fa fa-history"></i> Updated now
+                <i class="fa fa-history"></i> Mis à jour maintenant
               </div>
             </template>
           </chart-card>
@@ -45,7 +45,7 @@
               </div>
               <hr>
               <div class="stats">
-                <i class="fa fa-history"></i> Updated 1 hour ago
+                <i class="fa fa-history"></i> Mis à jour il y a 1 heure
               </div>
             </template>
           </chart-card>
@@ -69,7 +69,7 @@
               </div>
               <hr>
               <div class="stats">
-                <i class="fa fa-history"></i> Updated 1 day ago
+                <i class="fa fa-history"></i> Mis à jour il y a 1 jour
               </div>
             </template>
           </chart-card>
@@ -88,7 +88,7 @@
               </div>
               <hr>
               <div class="stats">
-                <i class="fa fa-history"></i> Updated 1 day ago
+                <i class="fa fa-history"></i> Mis à jour il y a 1 jour
               </div>
             </template>
           </chart-card>

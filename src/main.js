@@ -21,6 +21,8 @@ import 'leaflet/dist/leaflet.css';
 
 // LightBootstrap plugin
 import LightBootstrap from "./light-bootstrap-main";
+import 'bootstrap/dist/js/bootstrap.bundle';
+import 'bootstrap/dist/js/bootstrap';
 
 // router setup
 import routes from "./routes/routes";

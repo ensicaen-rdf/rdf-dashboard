@@ -9,11 +9,11 @@
       <table class="table table-striped" v-else>
         <thead>
           <tr>
-            <th scope="col">Rang</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Prénom</th>
-            <th scope="col">Score</th>
-            <th scope="col">Ville</th>
+            <th scope="col" class="col-md-2">Rang</th>
+            <th scope="col" class="col-md-3">Nom</th>
+            <th scope="col" class="col-md-3">Prénom</th>
+            <th scope="col" class="col-md-2">Score</th>
+            <th scope="col" class="col-md-3">Ville</th>
           </tr>
         </thead>
         <tbody>

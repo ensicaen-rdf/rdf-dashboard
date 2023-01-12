@@ -17,6 +17,7 @@
             celui-ci.
           </p>
         </template>
+
         <l-table :data="tableData.data" :columns="tableData.columns">
           <template slot="columns"></template>
 

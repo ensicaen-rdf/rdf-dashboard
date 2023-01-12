@@ -16,7 +16,7 @@
                       label="Couleur des yeux"
                       :disabled="true"
                       placeholder="Couleur des yeux"
-                      v-model="user.eyesColor">
+                      v-model="user.eyesColour">
           </base-input>
         </div>
         <div class="col-md-2">
@@ -45,12 +45,12 @@
                       v-model="user.bloodType">
           </base-input>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-2">
           <base-input type="text"
                       label="Rhésus"
                       :disabled="true"
                       placeholder="Rhésus"
-                      v-model="user.rhesus">
+                      v-model="user.bloodRhesus">
           </base-input>
         </div>
         <div class="col-md">
@@ -58,7 +58,7 @@
                       label="Pathologies"
                       :disabled="true"
                       placeholder="Pathologies"
-                      v-model="user.diseases">
+                      v-model="user.pathologies">
           </base-input>
         </div>
       </div>

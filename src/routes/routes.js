@@ -19,14 +19,14 @@ const routes = [
   {
     path: '/',
     component: DashboardLayout,
-    redirect: '/admin/overview'
+    redirect: '/dashboard/admin/overview'
   },
   {
-    path: '/signin',
+    path: '/dashboard/signin',
     component: SignIn,
   },
   {
-    path: '/admin',
+    path: '/dashboard/admin',
     component: DashboardLayout,
     redirect: '/admin/overview',
     children: [

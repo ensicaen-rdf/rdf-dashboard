@@ -3,10 +3,10 @@
     <img slot="image" src="img/logo-gouv-small.png" alt="..."/>
     <div class="author">
       <a href="#">
-        <img class="avatar border-gray" :src="'img/faces/face-' + this.user.id.toString() + '.jpg'" :alt="this.user.name"/>
+        <img class="avatar border-gray" :src="'http://192.168.3.111:3000/uploads/' + this.user.photo" :alt="this.user.name"/>
 
-        <h4 class="title">{{ this.user.firstname }} {{ this.user.lastname }}<br />
-          <small>Nat. ID : 123456789</small>
+        <h4 class="title">{{ this.user.firstNames.split(' ')[0] }} {{ this.user.lastName }}<br />
+          <small>Nat. ID : {{ this.user.nationalId }}</small>
         </h4>
       </a>
     </div>
@@ -18,7 +18,7 @@
                         label="Nom"
                         :disabled="true"
                         placeholder="Nom"
-                        v-model="user.lastname">
+                        v-model="user.lastName">
             </base-input>
           </div>
           <div class="col">
@@ -26,7 +26,7 @@
                         label="Prénom"
                         :disabled="true"
                         placeholder="Prénom"
-                        v-model="user.firstname">
+                        v-model="user.firstNames.split(' ')[0]">
             </base-input>
           </div>
         </div>
@@ -36,7 +36,7 @@
                         label="Prénom n°2"
                         :disabled="true"
                         placeholder="Prénom n°2"
-                        v-model="user.secondName">
+                        v-model="user.firstNames.split(' ')[1]">
             </base-input>
           </div>
           <div class="col">
@@ -44,7 +44,7 @@
                         label="Prénom n°3"
                         :disabled="true"
                         placeholder="Prénom n°3"
-                        v-model="user.thirdName">
+                        v-model="user.firstNames.split(' ')[2]">
             </base-input>
           </div>
         </div>
@@ -54,7 +54,7 @@
                         label="Date de naissance"
                         :disabled="true"
                         placeholder="Date de naissance"
-                        v-model="user.birthdate">
+                        v-model="user.dateOfBirth">
             </base-input>
           </div>
           <div class="col">
@@ -62,7 +62,7 @@
                         label="Lieu de naissance"
                         :disabled="true"
                         placeholder="Lieu de naissance"
-                        v-model="user.birthplace">
+                        v-model="user.placeOfBirth">
             </base-input>
           </div>
         </div>

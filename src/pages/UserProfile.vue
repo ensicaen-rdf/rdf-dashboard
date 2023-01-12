@@ -104,12 +104,12 @@
   </div>
 </template>
 <script>
-  import usersList from '../dataset/users.json'
   import GeneralProfile from './UserProfile/GeneralProfile.vue'
   import PersonalProfile from './UserProfile/PersonalProfile.vue'
   import UserCard from './UserProfile/UserCard.vue'
   import UserLocalization from './UserProfile/UserLocalization.vue'
   import ChartCard from 'src/components/Cards/ChartCard.vue'
+  import axios from "axios";
 
   export default {
     components: {
@@ -122,23 +122,27 @@
     data () {
       return {
         user: {
-          id: 0,
-          firstname: "Inconnu",
-          lastname: "Inconnu",
-          secondName: "Inconnu",
-          thirdName: "Inconnu",
-          birthdate: "JJ/MM/YYYY",
-          birthplace: "N/A",
+          idPerson: "0",
+          lastName: "Inconnu",
+          firstNames: "Inconnu",
+          dateOfBirth: "AAAA-MM-JJ",
+          placeOfBirth: "N/A",
+          nationalId: "N/A",
+          address: "N/A",
           city: "N/A",
-          zipCode: "N/A",
-          workplace: "N/A",
+          country: "N/A",
+          eyesColour: "N/A",
+          height: "N/A",
+          weight: "N/A",
+          photo: "N/A",
+          iris: "N/A",
+          fingerprints: "N/A",
           socialSecurityNumber: "N/A",
-          eyesColor: "N/A",
-          height: 170,
-          weight: 75,
-          diseases: "N/A",
+          pathologies: "N/A",
           bloodType: "N/A",
-          rhesus: "N/A"
+          bloodRhesus: "N/A",
+          placeOfWork: "N/A",
+          companyName: "N/A"
         },
         lineChart: {
           data: {
@@ -214,13 +218,28 @@
         }
       }
     },
-    mounted() {
-      for(let usr of usersList) {
-        if(usr.id === parseInt(this.$route.params.id)) {
-          this.user = usr;
-          break;
+    methods: {
+      retrieveUser: function () {
+        for(let usr of this.$parent.usersList) {
+          if(usr.idPerson === this.$route.params.id) {
+            this.user = usr;
+            break;
+          }
+        }
+
+        if(this.user.nationalId === "N/A") {
+          axios.get("http://192.168.3.111:3000/api/people/" + this.$route.params.id)
+            .then((response) => {
+              this.user = response.data;
+            })
+            .catch((errors) => {
+              console.log(errors);
+            });
         }
       }
+    },
+    mounted() {
+      this.retrieveUser();
     }
   }
 

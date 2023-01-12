@@ -2,7 +2,7 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <p class="col-xl-3">{{ day }}</p>
+        <p class="col-xl-3">{{ day }} 2050</p>
       </div>
       <div class="row">
         <div class="col-xl-3 col-md-6">
@@ -100,7 +100,10 @@
               </p>
             </template>
             <div class="container-fluid">
-              <table class="table table-striped">
+              <div class="alert alert-danger" role="alert" v-if="this.$parent.usersRank.length === 0">
+                Aucun citoyen trouvé...
+              </div>
+              <table class="table table-striped" v-else>
                 <thead>
                   <tr>
                     <th scope="col">Rang</th>
@@ -112,15 +115,15 @@
                 </thead>
                 <tbody>
                   <tr
-                    v-for="(user, index) in usersRank"
+                    v-for="(user, index) in this.$parent.usersRank"
                     :key="user.id"
                     v-on:click="
                       $router.push('/admin/user/' + user.id.toString())
                     "
                   >
                     <th scope="row">{{ index + 1 }}</th>
-                    <td>{{ user.lastname }}</td>
-                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.firstNames.split(" ")[0] }}</td>
                     <td>{{ user.score }}</td>
                     <td>{{ user.city }}</td>
                   </tr>
@@ -164,8 +167,6 @@ import * as locale from "dayjs/locale/fr";
 import ChartCard from "src/components/Cards/ChartCard.vue";
 import StatsCard from "src/components/Cards/StatsCard.vue";
 import LTable from "src/components/Table.vue";
-import usersList from "../dataset/users.json";
-
 export default {
   components: {
     LTable,
@@ -174,10 +175,9 @@ export default {
   },
   data() {
     return {
-      day: dayjs().locale(locale).format("dddd, D MMMM YYYY"),
+      day: dayjs().locale(locale).format("D MMMM"),
       editTooltip: "Edit Task",
       deleteTooltip: "Remove",
-      usersRank: [],
       lineChart: {
         data: {
           labels: [
@@ -291,18 +291,6 @@ export default {
         ],
       },
     };
-  },
-  methods: {
-    usersListRank: function () {
-      //let usersListCopy = [];
-      this.usersRank = JSON.parse(JSON.stringify(usersList));
-      this.usersRank.sort(function (a, b) {
-        return b.score - a.score;
-      });
-    },
-  },
-  mounted() {
-    this.usersListRank();
   },
 };
 </script>

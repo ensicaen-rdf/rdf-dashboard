@@ -70,19 +70,16 @@
           >
             <template slot="header">
               <h4 class="card-title">
-                Evolution de la consommation et production électrique depuis
-                janvier
+                Evolution de la consommation et production électrique moyenne
+                par foyer depuis janvier
               </h4>
               <p class="card-category">Résultat mensuel</p>
             </template>
             <template slot="footer">
               <div class="legend">
-                <i class="fa fa-circle text-info"></i> Production d'électricité
-                en France <i class="fa fa-circle text-danger"></i> Consommation
-                d'électricité en France
-                <i class="fa fa-circle text-warning"></i> Production moyenne
+                <i class="fa fa-circle text-info"></i> Production moyenne
                 d'électricité par foyer
-                <i class="fa fa-circle legend-violet"></i> Consommation moyenne
+                <i class="fa fa-circle text-danger"></i> Consommation moyenne
                 d'électricité par foyer
               </div>
               <hr />
@@ -111,6 +108,31 @@
           </card>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-12">
+          <chart-card
+            :chart-data="lineChart2.data"
+            :chart-options="lineChart2.options"
+            :responsive-options="lineChart2.responsiveOptions"
+          >
+            <template slot="header">
+              <h4 class="card-title">
+                Evolution de la consommation et production électrique en France
+                depuis janvier
+              </h4>
+              <p class="card-category">Résultat mensuel</p>
+            </template>
+            <template slot="footer">
+              <div class="legend">
+                <i class="fa fa-circle text-info"></i> Production d'électricité
+                en France <i class="fa fa-circle text-danger"></i> Consommation
+                d'électricité en France
+              </div>
+              <hr />
+            </template>
+          </chart-card>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -120,45 +142,10 @@ import * as locale from "dayjs/locale/fr";
 import ChartCard from "src/components/Cards/ChartCard.vue";
 import StatsCard from "src/components/Cards/StatsCard.vue";
 import LTable from "src/components/Table.vue";
+import usersRanking from "../dataset/users.json";
 
-const tableColumns = ["Id", "Name", "Salary", "Country", "City"];
-const tableData = [
-  {
-    id: 1,
-    name: "Dakota Rice",
-    salary: "$36.738",
-    country: "Niger",
-    city: "Oud-Turnhout",
-  },
-  {
-    id: 2,
-    name: "Minerva Hooper",
-    salary: "$23,789",
-    country: "Curaçao",
-    city: "Sinaai-Waas",
-  },
-  {
-    id: 3,
-    name: "Sage Rodriguez",
-    salary: "$56,142",
-    country: "Netherlands",
-    city: "Baileux",
-  },
-  {
-    id: 4,
-    name: "Philip Chaney",
-    salary: "$38,735",
-    country: "Korea, South",
-    city: "Overland Park",
-  },
-  {
-    id: 5,
-    name: "Doris Greene",
-    salary: "$63,542",
-    country: "Malawi",
-    city: "Feldkirchen in Kärnten",
-  },
-];
+const tableColumns = ["Rang", "Nom", "Prenom", "Score", "Ville"];
+const tableData = usersRanking;
 export default {
   components: {
     LTable,
@@ -170,21 +157,67 @@ export default {
       day: dayjs().locale(locale).format("dddd, D MMMM YYYY"),
       editTooltip: "Edit Task",
       deleteTooltip: "Remove",
-      pieChart: {
-        data: {
-          labels: ["40%", "20%", "40%"],
-          series: [40, 20, 40],
-        },
-      },
       table1: {
         columns: [...tableColumns],
         data: [...tableData],
       },
-      table2: {
-        columns: [...tableColumns],
-        data: [...tableData],
-      },
       lineChart: {
+        data: {
+          labels: [
+            "Jan",
+            "Fév",
+            "Mars",
+            "Avr",
+            "Mai",
+            "Juin",
+            "Juil",
+            "Aout",
+            "Sept",
+            "Oct",
+            "Nov",
+            "Déc",
+          ],
+          series: [
+            [
+              230, 1130, 670, 1080, 1900, 2390, 3070, 3080, 1130, 670, 1080,
+              1900,
+            ],
+            [
+              1020, 2560, 3400, 2100, 2500, 2680, 3800, 4000, 1020, 2560, 3400,
+              2100,
+            ],
+          ],
+        },
+        options: {
+          low: 0,
+          high: 5000,
+          showArea: false,
+          height: "250px",
+          axisX: {
+            showGrid: false,
+          },
+          lineSmooth: true,
+          showLine: true,
+          showPoint: true,
+          fullWidth: true,
+          chartPadding: {
+            right: 50,
+          },
+        },
+        responsiveOptions: [
+          [
+            "screen and (max-width: 640px)",
+            {
+              axisX: {
+                labelInterpolationFnc(value) {
+                  return value[0];
+                },
+              },
+            },
+          ],
+        ],
+      },
+      lineChart2: {
         data: {
           labels: [
             "Jan",
@@ -208,14 +241,6 @@ export default {
             [
               18500, 18600, 18900, 18500, 17700, 18000, 17500, 17000, 17200,
               17600, 17800, 18000,
-            ],
-            [
-              230, 1130, 670, 1080, 1900, 2390, 3070, 3080, 1130, 670, 1080,
-              1900,
-            ],
-            [
-              1020, 2560, 3400, 2100, 2500, 2680, 3800, 4000, 1020, 2560, 3400,
-              2100,
             ],
           ],
         },

@@ -10,25 +10,18 @@
         <i class="nc-icon nc-notes"></i>
         <p>Annuaire</p>
       </sidebar-link>
-      <sidebar-link to="/admin/table-list">
-        <i class="nc-icon nc-notes"></i>
-        <p>Table list</p>
+      <sidebar-link to="/admin/ranking">
+        <i class="nc-icon nc-chart-bar-32"></i>
+        <p>Classement</p>
+      </sidebar-link>
+      <sidebar-link to="/admin/notifications">
+        <i class="nc-icon nc-bell-55"></i>
+        <p>Tickets</p>
       </sidebar-link>
       <sidebar-link to="/admin/maps">
         <i class="nc-icon nc-pin-3"></i>
         <p>Maps</p>
       </sidebar-link>
-      <sidebar-link to="/admin/notifications">
-        <i class="nc-icon nc-bell-55"></i>
-        <p>Notifications</p>
-      </sidebar-link>
-
-      <template slot="bottom-links">
-        <sidebar-link class="active" to="/admin/upgrade">
-          <i class="nc-icon nc-alien-33"></i>
-          <p>Upgrade to PRO</p>
-        </sidebar-link>
-      </template>
     </side-bar>
     <div class="main-panel">
       <top-navbar></top-navbar>

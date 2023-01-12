@@ -13,6 +13,7 @@ import Maps from 'src/pages/Maps.vue'
 import Notifications from 'src/pages/Notifications.vue'
 import Upgrade from 'src/pages/Upgrade.vue'
 import SignIn from 'src/pages/SignInPage.vue'
+import Ranking from 'src/pages/RankingPage.vue'
 
 const routes = [
   {
@@ -44,6 +45,11 @@ const routes = [
         path: 'users-list',
         name: 'UsersList',
         component: UsersList
+      },
+      {
+        path: 'ranking',
+        name: 'Ranking',
+        component: Ranking
       },
       {
         path: 'table-list',

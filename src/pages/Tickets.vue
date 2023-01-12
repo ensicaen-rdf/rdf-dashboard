@@ -17,24 +17,33 @@
             celui-ci.
           </p>
         </template>
-        <l-table
-          :data="tableData.data"
-          :columns="tableData.columns"
-          class="table table-striped"
-        >
-          <template slot="columns"></template>
 
-          <template slot-scope="{ row }">
+
+        <div class="alert alert-warning" role="alert" v-if="this.tickets.length === 0">
+          Aucune demande n'a été trouvée...
+        </div>
+        <table class="table table-striped" v-else>
+          <thead>
+            <tr>
+              <th scope="col" class="col-md-3">Citoyen dénoncé</th>
+              <th scope="col" class="col-md">Raison</th>
+              <th scope="col" class="col-md-3">Décision</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr v-for="(ticket, index) in this.tickets" :key="ticket.idReport" >
             <td>
-              Dénonciations de {{ row.from }} à l'encontre de {{ row.target }}.
-              <br />
-              La raison est : {{ row.reason }}
+              {{ ticket.idPersonTarget }}
+            </td>
+            <td>
+              {{ ticket.reason }}
             </td>
             <td class="td-actions text-right">
               <button
                 type="button"
                 class="btn-simple btn btn-success"
                 v-tooltip.top-center="editTooltip"
+                v-on:click="checkTicket(index, ticket.idReport, true)"
               >
                 <i class="fa fa-check"></i>
               </button>
@@ -42,12 +51,14 @@
                 type="button"
                 class="btn-simple btn btn-danger"
                 v-tooltip.top-center="deleteTooltip"
+                v-on:click="checkTicket(index, ticket.idReport, false)"
               >
                 <i class="fa fa-times"></i>
               </button>
             </td>
-          </template>
-        </l-table>
+          </tr>
+          </tbody>
+        </table>
       </card>
     </div>
   </div>
@@ -56,6 +67,7 @@
 import ChartCard from "src/components/Cards/ChartCard.vue";
 import StatsCard from "src/components/Cards/StatsCard.vue";
 import LTable from "src/components/Table.vue";
+import axios from "axios";
 
 export default {
   components: {
@@ -65,56 +77,47 @@ export default {
   },
   data() {
     return {
-      tableData: {
-        data: [
-          {
-            from: "Marie Dupont",
-            target: "Jean-Luc Verie",
-            reason:
-              "Utilisation régulière de sa voiture pour des trajets court",
-          },
-          {
-            from: "Geannie Weasley",
-            target: "Ron Weasley",
-            reason: "Laisse ces appareils branchés durant ces absences.",
-          },
-          {
-            from: "Veronique Martin",
-            target: "Pierre Dublin",
-            reason: "Monsieur Dublin met sa température à 25°C",
-          },
-          {
-            from: "Miles Perso",
-            target: "Karen Test",
-            reason: "Karen ne trie pas ces déchets correctement",
-          },
-          {
-            from: "Matthieu Broue",
-            target: "Virginie LeTest",
-            reason:
-              "Madame LeTest, refuse de prendre les escaliers pour monter les marches ",
-          },
-          {
-            from: "Grégorie Jardin",
-            target: "Jean Marchal",
-            reason: "Jean n'éteint pas sa télévision lorsqu'il va dormir",
-          },
-        ],
-      },
+      tickets: [],
     };
   },
   methods: {
-    notifyVue(verticalAlign, horizontalAlign) {
-      const color = Math.floor(Math.random() * 4 + 1);
-      this.$notifications.notify({
-        message: `<span>Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer.</span>`,
-        icon: "nc-icon nc-app",
-        horizontalAlign: horizontalAlign,
-        verticalAlign: verticalAlign,
-        type: this.type[color],
-      });
+    retrieveTickets: function () {
+      axios.get("https://intensif06.ensicaen.fr/api/report/all")
+        .then((response) => {
+          let ticketsList = response.data;
+          for(let i = 0; i < ticketsList.length; i++) {
+            axios.get("https://intensif06.ensicaen.fr/api/people/" + ticketsList[i].idPersonTarget)
+              .then((response) => {
+                ticketsList[i].idPersonTarget = response.data.firstNames.split(" ")[0] + " " + response.data.lastName;
+              })
+              .catch((errors) => {
+                console.log(errors);
+              });
+          }
+          this.tickets = ticketsList;
+        })
+        .catch((errors) => {
+          console.log(errors);
+        });
     },
+    checkTicket: function (index, id, state) {
+      let data = {
+        idReport: id,
+        isValid: state,
+        nbPoints: 0
+      }
+      axios.post("https://intensif06.ensicaen.fr/api/report/validate", data)
+        .then(() => {
+          this.tickets = this.tickets.splice(index, 1);
+        })
+        .catch((errors) => {
+          console.log(errors);
+        });
+    }
   },
+  mounted() {
+    this.retrieveTickets();
+  }
 };
 </script>
 <style lang="scss">

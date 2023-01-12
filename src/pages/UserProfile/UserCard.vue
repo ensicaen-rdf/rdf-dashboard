@@ -20,8 +20,7 @@
         />
 
         <h4 class="title">
-          {{ this.user.firstNames.split(" ")[0] }} {{ this.user.lastName
-          }}<br />
+          {{ this.user.firstNames.split(" ")[0] }} {{ this.user.lastName }}<br />
           <small>Nat. ID : {{ this.user.nationalId }}</small>
         </h4>
       </a>

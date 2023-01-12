@@ -1,23 +1,72 @@
 <template>
   <card class="card-user">
-    <img slot="image" src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+    <img slot="image" src="img/logo-gouv-small.png" alt="..."/>
     <div class="author">
       <a href="#">
         <img class="avatar border-gray" :src="'img/faces/face-' + this.user.id.toString() + '.jpg'" :alt="this.user.name"/>
 
-        <h4 class="title">{{ this.user.name }}<br />
-          <small>michael24</small>
+        <h4 class="title">{{ this.user.firstname }} {{ this.user.lastname }}<br />
+          <small>Nat. ID : 123456789</small>
         </h4>
       </a>
     </div>
-    <p class="description text-center"> "Lamborghini Mercy <br>
-      Your chick she so thirsty <br>
-      I'm in that two seat Lambo"
-    </p>
-    <div slot="footer" class="text-center d-flex justify-content-center">
-      <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
-      <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
-      <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          <div class="col">
+            <base-input type="text"
+                        label="Nom"
+                        :disabled="true"
+                        placeholder="Nom"
+                        v-model="user.lastname">
+            </base-input>
+          </div>
+          <div class="col">
+            <base-input type="text"
+                        label="Prénom"
+                        :disabled="true"
+                        placeholder="Prénom"
+                        v-model="user.firstname">
+            </base-input>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <base-input type="text"
+                        label="Prénom n°2"
+                        :disabled="true"
+                        placeholder="Prénom n°2"
+                        v-model="user.secondName">
+            </base-input>
+          </div>
+          <div class="col">
+            <base-input type="text"
+                        label="Prénom n°3"
+                        :disabled="true"
+                        placeholder="Prénom n°3"
+                        v-model="user.thirdName">
+            </base-input>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <base-input type="text"
+                        label="Date de naissance"
+                        :disabled="true"
+                        placeholder="Date de naissance"
+                        v-model="user.birthdate">
+            </base-input>
+          </div>
+          <div class="col">
+            <base-input type="text"
+                        label="Lieu de naissance"
+                        :disabled="true"
+                        placeholder="Lieu de naissance"
+                        v-model="user.birthplace">
+            </base-input>
+          </div>
+        </div>
+      </div>
     </div>
   </card>
 </template>
@@ -28,36 +77,6 @@
       Card
     },
     props: ["user"],
-    data () {
-      return {
-        details: [
-          {
-            title: '12',
-            subTitle: 'Files'
-          },
-          {
-            title: '2GB',
-            subTitle: 'Used'
-          },
-          {
-            title: '24,6$',
-            subTitle: 'Spent'
-          }
-        ]
-      }
-    },
-    methods: {
-      getClasses (index) {
-        var remainder = index % 3
-        if (remainder === 0) {
-          return 'col-md-3 col-md-offset-1'
-        } else if (remainder === 2) {
-          return 'col-md-4'
-        } else {
-          return 'col-md-3'
-        }
-      }
-    }
   }
 
 </script>

@@ -1,0 +1,32 @@
+version: "3.8"
+
+x-service-deploy-default-policy: &service-deploy-default-policy
+  restart_policy:
+    condition: any
+    delay: 20s
+    max_attempts: 5
+
+networks:
+  traefik-public:
+    name: traefik-public
+    external: true
+
+services:
+  dashboard:
+    image: $REGISTRY_URL$REGISTRY_ROOT/rdf-dashboard
+    networks:
+      - traefik-public
+    deploy:
+      <<: *service-deploy-default-policy
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 256M
+      labels:
+        traefik.enable: "true"
+        traefik.http.routers.rdf-dashboard.rule: Host(`intensif06.ensicaen.fr`) && PathPrefix(`/dashboard`)
+        traefik.http.routers.rdf-dashboard.entrypoints: https
+        traefik.http.routers.rdf-dashboard.tls: "true"
+        traefik.http.routers.rdf-dashboard.tls.certresolver: le
+        traefik.http.routers.rdf-dashboard.service: rdf-dashboard
+        traefik.http.services.rdf-dashboard.loadbalancer.server.port: 8080

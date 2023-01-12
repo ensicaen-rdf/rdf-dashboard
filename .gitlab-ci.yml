@@ -16,7 +16,7 @@ stages:
     - docker push $DOCKER_IMAGE:$TAG
     - docker rmi $DOCKER_IMAGE:$TAG
   only:
-    - master
+    - main
 
 Dockerize:
   <<: *dockerize
@@ -37,4 +37,4 @@ Deploy:
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY_URL
     - docker stack deploy -c stack.yml $STACK --with-registry-auth
   only:
-    - master
+    - main

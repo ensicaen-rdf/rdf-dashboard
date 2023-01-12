@@ -9,7 +9,7 @@
           <nav>
             <ul class="footer-menu">
               <li>
-                <router-link to="/dashboard/admin">Dashboard</router-link>
+                <router-link to="/admin">Dashboard</router-link>
               </li>
             </ul>
           </nav>

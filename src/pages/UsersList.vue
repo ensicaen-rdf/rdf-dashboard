@@ -18,7 +18,7 @@
             </tr>
             </thead>
             <tbody>
-              <tr v-for="user in this.$parent.usersList" :key="user.id" v-on:click="$router.push('/dashboard/admin/user/' + user.idPerson.toString())">
+              <tr v-for="user in this.$parent.usersList" :key="user.id" v-on:click="$router.push('/admin/user/' + user.idPerson.toString())">
                 <th scope="row">{{ user.nationalId }}</th>
                 <td>{{ user.firstNames.split(" ")[0] }} {{ user.lastName }}</td>
                 <td>{{ user.age }}</td>

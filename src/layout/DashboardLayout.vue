@@ -2,19 +2,19 @@
   <div class="wrapper">
     <side-bar>
       <mobile-menu slot="content"></mobile-menu>
-      <sidebar-link to="/dashboard/admin/overview">
+      <sidebar-link to="/admin/overview">
         <i class="nc-icon nc-chart-pie-35"></i>
         <p>Dashboard</p>
       </sidebar-link>
-      <sidebar-link to="/dashboard/admin/users-list">
+      <sidebar-link to="/admin/users-list">
         <i class="nc-icon nc-notes"></i>
         <p>Annuaire</p>
       </sidebar-link>
-      <sidebar-link to="/dashboard/admin/ranking">
+      <sidebar-link to="/admin/ranking">
         <i class="nc-icon nc-chart-bar-32"></i>
         <p>Classement</p>
       </sidebar-link>
-      <sidebar-link to="/dashboard/admin/notifications">
+      <sidebar-link to="/admin/tickets">
         <i class="nc-icon nc-bell-55"></i>
         <p>Tickets</p>
       </sidebar-link>

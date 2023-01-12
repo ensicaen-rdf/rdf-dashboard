@@ -23,8 +23,9 @@
 
           <template slot-scope="{ row }">
             <td>
-              Dénonciations de {{ row.from }} à l'encontre de {{ row.target }},
-              pour {{ row.reason }}
+              Dénonciations de {{ row.from }} à l'encontre de {{ row.target }}.
+              <br />
+              La raison est : {{ row.reason }}
             </td>
             <td class="td-actions text-right">
               <button
@@ -67,34 +68,33 @@ export default {
             from: "Marie Dupont",
             target: "Jean-Luc Verie",
             reason:
-              'Sign contract for "What are conference organizers afraid of?"',
+              "Utilisation régulière de sa voiture pour des trajets court",
           },
           {
             from: "Geannie Weasley",
             target: "Ron Weasley",
-            reason:
-              "Lines From Great Russian Literature? Or E-mails From My Boss?",
+            reason: "Laisse ces appareils branchés durant ces absences.",
           },
           {
             from: "Veronique Martin",
             target: "Pierre Dublin",
-            reason:
-              "Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit",
+            reason: "Monsieur Dublin met sa température à 25°C",
           },
           {
             from: "Miles Perso",
             target: "Karen Test",
-            reason: "Create 4 Invisible User Experiences you Never Knew About",
+            reason: "Karen ne trie pas ces déchets correctement",
           },
           {
             from: "Matthieu Broue",
             target: "Virginie LeTest",
-            reason: 'Read "Following makes Medium better"',
+            reason:
+              "Madame LeTest, refuse de prendre les escaliers pour monter les marches ",
           },
           {
             from: "Grégorie Jardin",
             target: "Jean Marchal",
-            reason: "Unfollow 5 enemies from twitter",
+            reason: "Jean n'éteint pas sa télévision lorsqu'il va dormir",
           },
         ],
       },

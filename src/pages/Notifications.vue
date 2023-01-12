@@ -17,7 +17,11 @@
             celui-ci.
           </p>
         </template>
-        <l-table :data="tableData.data" :columns="tableData.columns">
+        <l-table
+          :data="tableData.data"
+          :columns="tableData.columns"
+          class="table table-striped"
+        >
           <template slot="columns"></template>
 
           <template slot-scope="{ row }">

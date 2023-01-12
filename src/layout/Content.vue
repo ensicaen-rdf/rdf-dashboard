@@ -15,7 +15,7 @@
     },
     methods: {
       retrieveUsers: function () {
-        axios.get("http://192.168.3.111:3000/api/people")
+        axios.get("https://intensif06.ensicaen.fr/api/people")
           .then((response) => {
             this.usersList = response.data;
             this.usersRank = JSON.parse(JSON.stringify(response.data));

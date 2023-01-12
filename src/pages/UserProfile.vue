@@ -228,7 +228,7 @@
         }
 
         if(this.user.nationalId === "N/A") {
-          axios.get("http://192.168.3.111:3000/api/people/" + this.$route.params.id)
+          axios.get("https://intensif06.ensicaen.fr/api/people/" + this.$route.params.id)
             .then((response) => {
               this.user = response.data;
             })

@@ -1,9 +1,14 @@
 <template>
   <card class="card-user">
-    <img slot="image" src="img/logo-gouv-small.png" alt="..."/>
+    <div class="row">
+      <div class="col-md-4">
+        <img slot="image" src="img/logo-gouv.png" alt="gouv" style="width: 100%"/>
+      </div>
+      <div class="col-md"></div>
+    </div>
     <div class="author">
       <a href="#">
-        <img class="avatar border-gray" :src="'http://192.168.3.111:3000/uploads/' + this.user.photo" :alt="this.user.name"/>
+        <img class="avatar border-gray" :src="'https://intensif06.ensicaen.fr/api/uploads/' + this.user.photo" :alt="this.user.name"/>
 
         <h4 class="title">{{ this.user.firstNames.split(' ')[0] }} {{ this.user.lastName }}<br />
           <small>Nat. ID : {{ this.user.nationalId }}</small>
@@ -64,6 +69,19 @@
                         placeholder="Lieu de naissance"
                         v-model="user.placeOfBirth">
             </base-input>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-md-8">
+            <label>Empreintes</label>
+            <img slot="image" :src="'https://intensif06.ensicaen.fr/api/uploads/' + this.user.fingerprints" alt="empreintes" style="width: 100%"/>
+          </div>
+          <div class="col-md">
+            <label>Iris</label>
+            <img slot="image" :src="'https://intensif06.ensicaen.fr/api/uploads/' + this.user.iris" alt="iris" style="width: 100%"/>
           </div>
         </div>
       </div>

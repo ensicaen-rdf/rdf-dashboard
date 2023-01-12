@@ -21,7 +21,7 @@
         </thead>
         <tbody>
           <tr
-            v-for="(user, index) in usersListRank()"
+            v-for="(user, index) in usersRank"
             :key="user.id"
             v-on:click="$router.push('/admin/user/' + user.id.toString())"
           >
@@ -47,14 +47,14 @@ export default {
   },
   data() {
     return {
-      usersList: usersList,
+      usersRank: [],
     };
   },
   methods: {
     usersListRank: function () {
-      let usersListCopy = [];
-      usersListCopy = this.usersList;
-      return usersListCopy.sort(function (a, b) {
+      //let usersListCopy = [];
+      this.usersRank = JSON.parse(JSON.stringify(usersList));
+      this.usersRank.sort(function (a, b) {
         return b.score - a.score;
       });
     },

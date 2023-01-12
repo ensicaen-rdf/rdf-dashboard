@@ -5,48 +5,60 @@
       <div class="row">
         <div class="col-md-4">
           <base-input type="text"
-                      label="Numéro de sécurité sociale"
+                      label="N° sécurité sociale"
                       :disabled="true"
-                      placeholder="Numéro de sécurité sociale"
+                      placeholder="N° sécurité sociale"
                       v-model="user.socialSecurityNumber">
           </base-input>
         </div>
-        <div class="col-md-4">
-          <base-input type="number"
-                      label="Code postal"
+        <div class="col-md">
+          <base-input type="text"
+                      label="Couleur des yeux"
                       :disabled="true"
-                      placeholder="Code postal"
-                      v-model="user.zipCode">
+                      placeholder="Couleur des yeux"
+                      v-model="user.eyesColor">
           </base-input>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
           <base-input type="text"
-                      label="Pays"
+                      label="Taille"
                       :disabled="true"
-                      placeholder="Pays"
-                      v-model="user.country">
+                      placeholder="Taille"
+                      v-model="user.height">
+          </base-input>
+        </div>
+        <div class="col-md-2">
+          <base-input type="text"
+                      label="Poids"
+                      :disabled="true"
+                      placeholder="Poids"
+                      v-model="user.weight">
           </base-input>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-2">
           <base-input type="text"
-                      label="Lieu de travail"
+                      label="Groupe sanguin"
                       :disabled="true"
-                      placeholder="Lieu de travail"
-                      v-model="user.workplace">
+                      placeholder="Groupe sanguin"
+                      v-model="user.bloodType">
           </base-input>
         </div>
-        <div class="col"></div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-1">
           <base-input type="text"
-                    label="Adresse de domicile"
-                    :disabled="true"
-                    placeholder="Adresse de domicile"
-                    v-model="user.address">
+                      label="Rhésus"
+                      :disabled="true"
+                      placeholder="Rhésus"
+                      v-model="user.rhesus">
+          </base-input>
+        </div>
+        <div class="col-md">
+          <base-input type="text"
+                      label="Pathologies"
+                      :disabled="true"
+                      placeholder="Pathologies"
+                      v-model="user.diseases">
           </base-input>
         </div>
       </div>

@@ -16,6 +16,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import App from "./App.vue";
+import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+import 'leaflet/dist/leaflet.css';
 
 // LightBootstrap plugin
 import LightBootstrap from "./light-bootstrap-main";
@@ -27,6 +29,9 @@ import "./registerServiceWorker";
 // plugin setup
 Vue.use(VueRouter);
 Vue.use(LightBootstrap);
+Vue.component('l-map', LMap);
+Vue.component('l-tile-layer', LTileLayer);
+Vue.component('l-marker', LMarker);
 
 // configure router
 const router = new VueRouter({

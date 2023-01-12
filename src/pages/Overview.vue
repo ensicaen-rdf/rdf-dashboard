@@ -96,9 +96,9 @@
             body-classes="table-full-width table-responsive"
           >
             <template slot="header">
-              <h4 class="card-title">Top du classement</h4>
+              <h4 class="card-title">Classement</h4>
               <p class="card-category">
-                Top 5 des meilleurs citoyens contribuant pour la production
+                Top 5 des meilleurs citoyens contribuant à la production
                 d'électricité
               </p>
             </template>

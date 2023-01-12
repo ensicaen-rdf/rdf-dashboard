@@ -11,62 +11,93 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
+          <chart-card :chart-data="lineChart.data"
+                      :chart-options="lineChart.options"
+                      :responsive-options="lineChart.responsiveOptions">
+            <template slot="header">
+              <h4 class="card-title">24H</h4>
+              <p class="card-category">Production et consommation d'électricité des dernières 24 heures</p>
+            </template>
+            <template slot="footer">
+              <div class="legend">
+                <i class="fa fa-circle text-info"></i> Consommation
+                <i class="fa fa-circle text-danger"></i> Production
+              </div>
+              <hr>
+              <div class="stats">
+                <i class="fa fa-history"></i> Updated now
+              </div>
+            </template>
+          </chart-card>
+        </div>
+
+        <div class="col-md-4">
+          <chart-card :chart-data="pieChartWeek.data" chart-type="Pie">
+            <template slot="header">
+              <h4 class="card-title">7 jours</h4>
+              <p class="card-category">Production et consommation d'électricité sur 7 jours glissants</p>
+            </template>
+            <template slot="footer">
+              <div class="legend">
+                <i class="fa fa-circle text-info"></i> Consommation
+                <i class="fa fa-circle text-danger"></i> Production
+              </div>
+              <hr>
+              <div class="stats">
+                <i class="fa fa-history"></i> Updated 1 hour ago
+              </div>
+            </template>
+          </chart-card>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
           <chart-card
             :chart-data="barChart.data"
             :chart-options="barChart.options"
             :chart-responsive-options="barChart.responsiveOptions"
             chart-type="Bar">
             <template slot="header">
-              <h4 class="card-title">2014 Sales</h4>
-              <p class="card-category">All products including Taxes</p>
+              <h4 class="card-title">2050</h4>
+              <p class="card-category">Production et consommation d'électricité sur l'année 2050</p>
             </template>
             <template slot="footer">
               <div class="legend">
-                <i class="fa fa-circle text-info"></i> Tesla Model S
-                <i class="fa fa-circle text-danger"></i> BMW 5 Series
+                <i class="fa fa-circle text-info"></i> Consommation
+                <i class="fa fa-circle text-danger"></i> Production
               </div>
               <hr>
               <div class="stats">
-                <i class="fa fa-check"></i> Data information certified
+                <i class="fa fa-history"></i> Updated 1 day ago
               </div>
             </template>
           </chart-card>
         </div>
 
-        <div class="col-md-6">
-          <card>
+        <div class="col-md-4">
+          <chart-card :chart-data="pieChartMonth.data" chart-type="Pie">
             <template slot="header">
-              <h5 class="title">Tasks</h5>
-              <p class="category">Backend development</p>
+              <h4 class="card-title">30 jours</h4>
+              <p class="card-category">Production et consommation d'électricité sur 30 jours glissants</p>
             </template>
-            <l-table :data="tableData.data"
-                     :columns="tableData.columns">
-              <template slot="columns"></template>
-
-              <template slot-scope="{row}">
-                <td>
-                  <base-checkbox v-model="row.checked"></base-checkbox>
-                </td>
-                <td>{{row.title}}</td>
-                <td class="td-actions text-right">
-                  <button type="button" class="btn-simple btn btn-xs btn-info" v-tooltip.top-center="editTooltip">
-                    <i class="fa fa-edit"></i>
-                  </button>
-                  <button type="button" class="btn-simple btn btn-xs btn-danger" v-tooltip.top-center="deleteTooltip">
-                    <i class="fa fa-times"></i>
-                  </button>
-                </td>
-              </template>
-            </l-table>
-            <div class="footer">
+            <template slot="footer">
+              <div class="legend">
+                <i class="fa fa-circle text-info"></i> Consommation
+                <i class="fa fa-circle text-danger"></i> Production
+              </div>
               <hr>
               <div class="stats">
-                <i class="fa fa-history"></i> Updated 3 minutes ago
+                <i class="fa fa-history"></i> Updated 1 day ago
               </div>
-            </div>
-          </card>
+            </template>
+          </chart-card>
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="col-md-12">
+          <user-localization/>
         </div>
       </div>
     </div>
@@ -77,6 +108,7 @@
   import GeneralProfile from './UserProfile/GeneralProfile.vue'
   import PersonalProfile from './UserProfile/PersonalProfile.vue'
   import UserCard from './UserProfile/UserCard.vue'
+  import UserLocalization from './UserProfile/UserLocalization.vue'
   import ChartCard from 'src/components/Cards/ChartCard.vue'
 
   export default {
@@ -84,6 +116,7 @@
       GeneralProfile,
       PersonalProfile,
       UserCard,
+      UserLocalization,
       ChartCard
     },
     data () {
@@ -98,14 +131,55 @@
           birthplace: "N/A",
           city: "N/A",
           zipCode: "N/A",
-          workplace: "N/A"
+          workplace: "N/A",
+          socialSecurityNumber: "N/A",
+          eyesColor: "N/A",
+          height: 170,
+          weight: 75,
+          diseases: "N/A",
+          bloodType: "N/A",
+          rhesus: "N/A"
+        },
+        lineChart: {
+          data: {
+            labels: ['9:00', '12:00', '15:00', '18:00', '21:00', '00:00', '3:00', '6:00'],
+            series: [
+              [287, 385, 490, 492, 554, 586, 698, 695],
+              [67, 152, 143, 240, 287, 335, 435, 437],
+            ]
+          },
+          options: {
+            low: 0,
+            high: 800,
+            showArea: false,
+            height: '245px',
+            axisX: {
+              showGrid: false
+            },
+            lineSmooth: true,
+            showLine: true,
+            showPoint: true,
+            fullWidth: true,
+            chartPadding: {
+              right: 50
+            }
+          },
+          responsiveOptions: [
+            ['screen and (max-width: 640px)', {
+              axisX: {
+                labelInterpolationFnc (value) {
+                  return value[0]
+                }
+              }
+            }]
+          ]
         },
         barChart: {
           data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            labels: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jui', 'Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
             series: [
-              [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
-              [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695]
+              [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895].reverse(),
+              [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695].reverse()
             ]
           },
           options: {
@@ -126,18 +200,17 @@
             }]
           ]
         },
-        tableData: {
-          data: [
-            {title: 'Sign contract for "What are conference organizers afraid of?"', checked: false},
-            {title: 'Lines From Great Russian Literature? Or E-mails From My Boss?', checked: true},
-            {
-              title: 'Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit',
-              checked: true
-            },
-            {title: 'Create 4 Invisible User Experiences you Never Knew About', checked: false},
-            {title: 'Read "Following makes Medium better"', checked: false},
-            {title: 'Unfollow 5 enemies from twitter', checked: false}
-          ]
+        pieChartWeek: {
+          data: {
+            labels: ['42 kWh', '14 kWh'],
+            series: [42, 14]
+          }
+        },
+        pieChartMonth: {
+          data: {
+            labels: ['420 kWh', '140 kWh'],
+            series: [420, 140]
+          }
         }
       }
     },

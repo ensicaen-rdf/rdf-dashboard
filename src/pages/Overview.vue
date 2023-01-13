@@ -14,7 +14,9 @@
               <p class="card-category">Production d'électricité</p>
               <h4 class="card-title">68 GWh</h4>
             </div>
-            <div slot="footer"><i class="fa fa-calendar"></i> Sur 30 jours glissants</div>
+            <div slot="footer">
+              <i class="fa fa-calendar"></i> Sur 30 jours glissants
+            </div>
           </stats-card>
         </div>
 
@@ -27,7 +29,9 @@
               <p class="card-category">Consommation d'électricité</p>
               <h4 class="card-title">458 GWh</h4>
             </div>
-            <div slot="footer"><i class="fa fa-calendar"></i> Sur 30 jours glissants</div>
+            <div slot="footer">
+              <i class="fa fa-calendar"></i> Sur 30 jours glissants
+            </div>
           </stats-card>
         </div>
 
@@ -42,7 +46,9 @@
               </p>
               <h4 class="card-title">77 kWh</h4>
             </div>
-            <div slot="footer"><i class="fa fa-calendar"></i> Sur 30 jours glissants</div>
+            <div slot="footer">
+              <i class="fa fa-calendar"></i> Sur 30 jours glissants
+            </div>
           </stats-card>
         </div>
 
@@ -57,7 +63,9 @@
               </p>
               <h4 class="card-title">489 kWh</h4>
             </div>
-            <div slot="footer"><i class="fa fa-calendar"></i> Sur 30 jours glissants (en kWh)</div>
+            <div slot="footer">
+              <i class="fa fa-calendar"></i> Sur 30 jours glissants (en kWh)
+            </div>
           </stats-card>
         </div>
       </div>
@@ -70,8 +78,8 @@
           >
             <template slot="header">
               <h4 class="card-title">
-                Consommation et production électrique moyenne
-                par foyer sur l'année en cours
+                Consommation et production électrique moyenne par foyer sur
+                l'année en cours
               </h4>
               <p class="card-category">Résultat sur 12 mois glissants</p>
             </template>
@@ -100,7 +108,11 @@
               </p>
             </template>
             <div class="container-fluid">
-              <div class="alert alert-danger" role="alert" v-if="this.$parent.usersRank.length === 0">
+              <div
+                class="alert alert-danger"
+                role="alert"
+                v-if="this.$parent.usersRank.length === 0"
+              >
                 Aucun citoyen trouvé...
               </div>
               <table class="table table-striped" v-else>
@@ -115,7 +127,7 @@
                 </thead>
                 <tbody>
                   <tr
-                    v-for="(user, index) in this.$parent.usersRank"
+                    v-for="(user, index) in this.$parent.usersRank.slice(0, 5)"
                     :key="user.id"
                     v-on:click="
                       $router.push('/admin/user/' + user.id.toString())
@@ -142,9 +154,12 @@
           >
             <template slot="header">
               <h4 class="card-title">
-                Consommation et production électrique en France sur l'année en cours
+                Consommation et production électrique en France sur l'année en
+                cours
               </h4>
-              <p class="card-category">Résultat sur 12 mois glissants (en kWh)</p>
+              <p class="card-category">
+                Résultat sur 12 mois glissants (en kWh)
+              </p>
             </template>
             <template slot="footer">
               <div class="legend">
@@ -194,11 +209,10 @@ export default {
             "Déc",
           ],
           series: [
+            [914, 882, 863, 835, 849, 832, 815, 775, 729, 614, 683, 577],
             [
-              914, 882, 863, 835, 849, 832, 815, 775, 729, 614, 683, 577
-            ],
-            [
-              3332, 3241, 3131, 3033, 3015, 2929, 2824, 2724, 2721, 2815, 2811, 2702,
+              3332, 3241, 3131, 3033, 3015, 2929, 2824, 2724, 2721, 2815, 2811,
+              2702,
             ],
           ],
         },
@@ -248,11 +262,10 @@ export default {
             "Déc",
           ],
           series: [
+            [914, 882, 863, 835, 849, 832, 815, 775, 729, 614, 683, 577],
             [
-              914, 882, 863, 835, 849, 832, 815, 775, 729, 614, 683, 577
-            ],
-            [
-              3332, 3241, 3131, 3033, 3015, 2929, 2824, 2724, 2721, 2815, 2811, 2702,
+              3332, 3241, 3131, 3033, 3015, 2929, 2824, 2724, 2721, 2815, 2811,
+              2702,
             ],
           ],
         },

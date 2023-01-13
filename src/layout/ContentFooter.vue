@@ -17,6 +17,13 @@
                 <router-link to="/admin">Dashboard</router-link>
               </li>
             </ul>
+            <ul class="gouv-link">
+              <li><b>elysee.fr</b></li>
+              <li><b>service-public.fr</b></li>
+              <li><b>legifrance.gouv.fr</b></li>
+              <li><b>data.gouv.fr</b></li>
+              <li><b>france.fr</b></li>
+            </ul>
           </nav>
         </div>
         <div class="col-md-1 m-3">

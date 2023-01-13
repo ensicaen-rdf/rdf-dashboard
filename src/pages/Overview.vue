@@ -79,7 +79,7 @@
             <template slot="header">
               <h4 class="card-title">
                 Consommation et production électrique moyenne par foyer sur
-                l'année en cours
+                l'année en cours <small>(kWh)</small>
               </h4>
               <p class="card-category">Résultat sur 12 mois glissants</p>
             </template>
@@ -155,7 +155,7 @@
             <template slot="header">
               <h4 class="card-title">
                 Consommation et production électrique en France sur l'année en
-                cours
+                cours <small>(GWh)</small>
               </h4>
               <p class="card-category">
                 Résultat sur 12 mois glissants (en kWh)
@@ -209,16 +209,13 @@ export default {
             "Déc",
           ],
           series: [
-            [914, 882, 863, 835, 849, 832, 815, 775, 729, 614, 683, 577],
-            [
-              3332, 3241, 3131, 3033, 3015, 2929, 2824, 2724, 2721, 2815, 2811,
-              2702,
-            ],
+            [79, 84, 81, 75, 68, 71, 65, 62, 57, 64, 76, 85],
+            [490, 500, 487, 470, 478, 483, 473, 457, 446, 478, 486, 525],
           ],
         },
         options: {
           low: 0,
-          high: 3500,
+          high: 600,
           showArea: false,
           height: "250px",
           axisX: {
@@ -262,16 +259,13 @@ export default {
             "Déc",
           ],
           series: [
-            [914, 882, 863, 835, 849, 832, 815, 775, 729, 614, 683, 577],
-            [
-              3332, 3241, 3131, 3033, 3015, 2929, 2824, 2724, 2721, 2815, 2811,
-              2702,
-            ],
+            [76, 83, 78, 72, 68, 62, 64, 58, 54, 57, 68, 80],
+            [515, 509, 502, 497, 482, 477, 473, 468, 464, 472, 484, 559],
           ],
         },
         options: {
           low: 0,
-          high: 3500,
+          high: 600,
           showArea: false,
           height: "250px",
           axisX: {

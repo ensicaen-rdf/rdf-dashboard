@@ -123,7 +123,7 @@
 
           <card>
             <h4 slot="header" class="card-title">Vidéo surveillance</h4>
-            <VideoStream controls src="http://193.252.216.214:80/oneshotimage1?COUNTER"/>
+            <VideoStream controls src=""/>
           </card>
         </div>
       </div>

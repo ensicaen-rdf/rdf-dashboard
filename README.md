@@ -1,13 +1,13 @@
-# [RDF CSSE DASHBOARD](http://vuejs.creative-tim.com/vue-light-bootstrap-dashboard) [![version][version-badge]][changelog] [![license][license-badge]][license]
+# [RDF CSSE DASHBOARD](https://github.com/ensicaen-rdf/rdf-dashboard) [![version][version-badge]][changelog] [![license][license-badge]][license]
 
 > Admin RDF CSSE dashboard
 
-This project is a vue version of [RDF CSSE Dashboard](https://www.creative-tim.com/product/light-bootstrap-dashboard)
+This project is a vue version of [RDF CSSE Dashboard](https://github.com/ensicaen-rdf/rdf-dashboard)
 designed for vue js. The dashboard includes Bootstrap 4, vue-router, chartist, leaflet and several other plugins/components.
 
 Check the [Live Demo here](https://intensif06.ensicaen.fr/dashboard/).
 
-![](public/Dashboard.PNG)
+![](src/assets/img/capture.png)
 
 ## :rocket: Getting started
 
@@ -20,7 +20,7 @@ RDF CSSE Dashboard is built on top of Bootstrap 4, Vuejs and Vue-router. To get 
 
 The repo uses [vue-cli](https://github.com/vuejs/vue-cli) scaffolding which takes care of the development setup with webpack and all the necessary modern tools to make web development faster and easier.
 
-## [Documentation (site de la RDF)](https://intensif06.ensicaen.fr/demo-renewable-energy-services.html)
+## [Documentation (site de la RDF)](https://intensif06.ensicaen.fr)
 
 ## :cloud: Build Setup
 

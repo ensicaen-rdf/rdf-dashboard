@@ -318,7 +318,7 @@
           .catch((errors) => {
             console.log(errors);
           });
-        await this.updateCSSE();
+        await this.updateSteps();
       },
       updateLocalisation: async function () {
         await delay(10000);

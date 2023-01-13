@@ -6,12 +6,7 @@ import NotFound from "../pages/NotFoundPage.vue";
   import Overview from 'src/pages/Overview.vue'
   import UserProfile from 'src/pages/UserProfile.vue'
   import UsersList from 'src/pages/UsersList.vue'
-  import TableList from 'src/pages/TableList.vue'
-  import Typography from 'src/pages/Typography.vue'
-  import Icons from 'src/pages/Icons.vue'
-  import Maps from 'src/pages/Maps.vue'
   import Tickets from 'src/pages/Tickets.vue'
-  import Upgrade from 'src/pages/Upgrade.vue'
   import SignIn from 'src/pages/SignInPage.vue'
   import Ranking from 'src/pages/RankingPage.vue'
 
@@ -52,34 +47,9 @@ const routes = [
         component: Ranking,
       },
       {
-        path: "table-list",
-        name: "Table List",
-        component: TableList,
-      },
-      {
-        path: "typography",
-        name: "Typography",
-        component: Typography,
-      },
-      {
-        path: "icons",
-        name: "Icons",
-        component: Icons,
-      },
-      {
-        path: "maps",
-        name: "Maps",
-        component: Maps,
-      },
-      {
         path: "tickets",
         name: "Tickets",
         component: Tickets,
-      },
-      {
-        path: "upgrade",
-        name: "Upgrade to PRO",
-        component: Upgrade,
       },
     ],
   },

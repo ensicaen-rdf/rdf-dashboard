@@ -2,7 +2,11 @@
   <div class="content">
     <div class="container-fluid">
       <h2>Classement</h2>
-      <div class="alert alert-danger" role="alert" v-if="this.$parent.usersRank.length === 0">
+      <div
+        class="alert alert-danger"
+        role="alert"
+        v-if="this.$parent.usersRank.length === 0"
+      >
         Aucun citoyen trouvé...
       </div>
 
@@ -21,12 +25,12 @@
             v-for="(user, index) in this.$parent.usersRank"
             :key="user.idPerson"
             v-on:click="$router.push('/admin/user/' + user.idPerson.toString())"
-            style="cursor: pointer;"
+            style="cursor: pointer"
           >
             <th scope="row">{{ index + 1 }}</th>
             <td>{{ user.lastName }}</td>
             <td>{{ user.firstNames.split(" ")[0] }}</td>
-            <td>{{ user.score }}</td>
+            <td>{{ user.csse }}</td>
             <td>{{ user.city }}</td>
           </tr>
         </tbody>

@@ -14,7 +14,9 @@
               <p class="card-category">Production d'électricité</p>
               <h4 class="card-title">68 GWh</h4>
             </div>
-            <div slot="footer"><i class="fa fa-calendar"></i> Sur 30 jours glissants</div>
+            <div slot="footer">
+              <i class="fa fa-calendar"></i> Sur 30 jours glissants
+            </div>
           </stats-card>
         </div>
 
@@ -27,7 +29,9 @@
               <p class="card-category">Consommation d'électricité</p>
               <h4 class="card-title">458 GWh</h4>
             </div>
-            <div slot="footer"><i class="fa fa-calendar"></i> Sur 30 jours glissants</div>
+            <div slot="footer">
+              <i class="fa fa-calendar"></i> Sur 30 jours glissants
+            </div>
           </stats-card>
         </div>
 
@@ -42,7 +46,9 @@
               </p>
               <h4 class="card-title">77 kWh</h4>
             </div>
-            <div slot="footer"><i class="fa fa-calendar"></i> Sur 30 jours glissants</div>
+            <div slot="footer">
+              <i class="fa fa-calendar"></i> Sur 30 jours glissants
+            </div>
           </stats-card>
         </div>
 
@@ -57,7 +63,9 @@
               </p>
               <h4 class="card-title">489 kWh</h4>
             </div>
-            <div slot="footer"><i class="fa fa-calendar"></i> Sur 30 jours glissants (en kWh)</div>
+            <div slot="footer">
+              <i class="fa fa-calendar"></i> Sur 30 jours glissants (en kWh)
+            </div>
           </stats-card>
         </div>
       </div>
@@ -70,8 +78,8 @@
           >
             <template slot="header">
               <h4 class="card-title">
-                Consommation et production électrique moyenne
-                par foyer sur l'année en cours
+                Consommation et production électrique moyenne par foyer sur
+                l'année en cours <small>(kWh)</small>
               </h4>
               <p class="card-category">Résultat sur 12 mois glissants</p>
             </template>
@@ -100,7 +108,11 @@
               </p>
             </template>
             <div class="container-fluid">
-              <div class="alert alert-danger" role="alert" v-if="this.$parent.usersRank.length === 0">
+              <div
+                class="alert alert-danger"
+                role="alert"
+                v-if="this.$parent.usersRank.length === 0"
+              >
                 Aucun citoyen trouvé...
               </div>
               <table class="table table-striped" v-else>
@@ -115,7 +127,7 @@
                 </thead>
                 <tbody>
                   <tr
-                    v-for="(user, index) in this.$parent.usersRank"
+                    v-for="(user, index) in this.$parent.usersRank.slice(0, 5)"
                     :key="user.id"
                     v-on:click="
                       $router.push('/admin/user/' + user.id.toString())
@@ -124,7 +136,7 @@
                     <th scope="row">{{ index + 1 }}</th>
                     <td>{{ user.lastName }}</td>
                     <td>{{ user.firstNames.split(" ")[0] }}</td>
-                    <td>{{ user.score }}</td>
+                    <td>{{ user.csse }}</td>
                     <td>{{ user.city }}</td>
                   </tr>
                 </tbody>
@@ -142,9 +154,12 @@
           >
             <template slot="header">
               <h4 class="card-title">
-                Consommation et production électrique en France sur l'année en cours
+                Consommation et production électrique en France sur l'année en
+                cours <small>(GWh)</small>
               </h4>
-              <p class="card-category">Résultat sur 12 mois glissants (en kWh)</p>
+              <p class="card-category">
+                Résultat sur 12 mois glissants (en kWh)
+              </p>
             </template>
             <template slot="footer">
               <div class="legend">
@@ -194,17 +209,13 @@ export default {
             "Déc",
           ],
           series: [
-            [
-              914, 882, 863, 835, 849, 832, 815, 775, 729, 614, 683, 577
-            ],
-            [
-              3332, 3241, 3131, 3033, 3015, 2929, 2824, 2724, 2721, 2815, 2811, 2702,
-            ],
+            [79, 84, 81, 75, 68, 71, 65, 62, 57, 64, 76, 85],
+            [490, 500, 487, 470, 478, 483, 473, 457, 446, 478, 486, 525],
           ],
         },
         options: {
           low: 0,
-          high: 3500,
+          high: 600,
           showArea: false,
           height: "250px",
           axisX: {
@@ -248,17 +259,13 @@ export default {
             "Déc",
           ],
           series: [
-            [
-              914, 882, 863, 835, 849, 832, 815, 775, 729, 614, 683, 577
-            ],
-            [
-              3332, 3241, 3131, 3033, 3015, 2929, 2824, 2724, 2721, 2815, 2811, 2702,
-            ],
+            [76, 83, 78, 72, 68, 62, 64, 58, 54, 57, 68, 80],
+            [515, 509, 502, 497, 482, 477, 473, 468, 464, 472, 484, 559],
           ],
         },
         options: {
           low: 0,
-          high: 3500,
+          high: 600,
           showArea: false,
           height: "250px",
           axisX: {

@@ -97,7 +97,6 @@
 
       <div class="row">
         <div class="col-md">
-          {{ this.userLocalisation }}
           <user-localization :localization="userLocalisation"/>
         </div>
         <div class="col-md-4">
@@ -106,6 +105,7 @@
             <div class="text-center text-info">
               <h1 class="display-3">{{ this.user.csse }}</h1>
             </div>
+            <hr>
             <div class="stats">
               <i class="fa fa-history"></i> Mis à jour maintenant
             </div>
@@ -115,6 +115,7 @@
             <div class="text-center text-danger">
               <h1 class="display-3">{{ this.userSteps }}</h1>
             </div>
+            <hr>
             <div class="stats">
               <i class="fa fa-history"></i> Mis à jour maintenant
             </div>

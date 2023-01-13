@@ -42,7 +42,6 @@
               <button
                 type="button"
                 class="btn-simple btn btn-success"
-                v-tooltip.top-center="editTooltip"
                 v-on:click="checkTicket(index, ticket.idReport, true)"
               >
                 <i class="fa fa-check"></i>
@@ -50,7 +49,6 @@
               <button
                 type="button"
                 class="btn-simple btn btn-danger"
-                v-tooltip.top-center="deleteTooltip"
                 v-on:click="checkTicket(index, ticket.idReport, false)"
               >
                 <i class="fa fa-times"></i>
@@ -108,8 +106,15 @@ export default {
       }
       axios.post("https://intensif06.ensicaen.fr/api/report/validate", data)
         .then(() => {
-          if(this.tickets.length > 1)
-            this.tickets = this.tickets.splice(index, 1);
+          if(this.tickets.length > 1) {
+            let ticketsCopy = JSON.parse(JSON.stringify(this.tickets));
+            this.tickets = [];
+            for(let i = 0; i < ticketsCopy.length; i++) {
+              if(i !== index) {
+                this.tickets.push(ticketsCopy[i]);
+              }
+            }
+          }
           else
             this.tickets = [];
         })

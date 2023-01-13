@@ -20,8 +20,6 @@
       </sidebar-link>
     </side-bar>
     <div class="main-panel">
-      <top-navbar></top-navbar>
-
       <dashboard-content @click="toggleSidebar" style="min-height: 90vh">
       </dashboard-content>
 

@@ -136,7 +136,7 @@
                     <th scope="row">{{ index + 1 }}</th>
                     <td>{{ user.lastName }}</td>
                     <td>{{ user.firstNames.split(" ")[0] }}</td>
-                    <td>{{ user.score }}</td>
+                    <td>{{ user.csse }}</td>
                     <td>{{ user.city }}</td>
                   </tr>
                 </tbody>

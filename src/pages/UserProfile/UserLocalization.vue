@@ -38,7 +38,6 @@
 
 <script>
 import { LMap, LTileLayer, LControlLayers, LMarker, LPopup, LIcon } from "vue2-leaflet";
-
 import 'leaflet/dist/leaflet.css';
 
 export default {
@@ -55,8 +54,15 @@ export default {
       zoom: 13,
       tileProviders: [
         {
-          name: 'Stadia AlidadeSmoothDark',
+          name: 'OpenStreetMap',
           visible: true,
+          attribution:
+            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+        },
+        {
+          name: 'Stadia AlidadeSmoothDark',
+          visible: false,
           attribution:
             '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
           url: 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png',

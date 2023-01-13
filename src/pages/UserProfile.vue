@@ -103,7 +103,7 @@
           <card>
             <h4 slot="header" class="card-title">Points du CSSE <small>(score mensuel)</small></h4>
             <div class="text-center text-info">
-              <h1 class="display-3">{{ this.user.csse }}</h1>
+              <h1>{{ this.user.csse }}</h1>
             </div>
             <hr>
             <div class="stats">
@@ -113,12 +113,17 @@
           <card>
             <h4 slot="header" class="card-title">Nombre de pas <small>(quotidien)</small></h4>
             <div class="text-center text-danger">
-              <h1 class="display-3">{{ this.userSteps }}</h1>
+              <h1>{{ this.userSteps }}</h1>
             </div>
             <hr>
             <div class="stats">
               <i class="fa fa-history"></i> Mis à jour maintenant
             </div>
+          </card>
+
+          <card>
+            <h4 slot="header" class="card-title">Vidéo surveillance</h4>
+            <VideoStream controls src="http://193.252.216.214:80/oneshotimage1?COUNTER"/>
           </card>
         </div>
       </div>
@@ -132,6 +137,7 @@
   import UserLocalization from './UserProfile/UserLocalization.vue'
   import ChartCard from 'src/components/Cards/ChartCard.vue'
   import axios from "axios";
+  import { VideoStream } from 'stream-vue';
   const delay = require('delay');
 
   export default {
@@ -140,7 +146,8 @@
       PersonalProfile,
       UserCard,
       UserLocalization,
-      ChartCard
+      ChartCard,
+      VideoStream
     },
     data () {
       return {
@@ -312,12 +319,24 @@
             console.log(errors);
           });
         await this.updateCSSE();
+      },
+      updateLocalisation: async function () {
+        await delay(10000);
+        await axios.get("https://intensif06.ensicaen.fr/api/people/" + this.$route.params.id + "/localisation")
+          .then((response) => {
+            this.userLocalisation = response.data;
+          })
+          .catch((errors) => {
+            console.log(errors);
+          });
+        await this.updateLocalisation();
       }
     },
     async mounted() {
       await this.retrieveUser();
       this.updateCSSE();
       this.updateSteps();
+      this.updateLocalisation();
 
     }
   }

@@ -96,8 +96,29 @@
       </div>
 
       <div class="row">
-        <div class="col-md-12">
-          <user-localization/>
+        <div class="col-md">
+          {{ this.userLocalisation }}
+          <user-localization :localization="userLocalisation"/>
+        </div>
+        <div class="col-md-4">
+          <card>
+            <h4 slot="header" class="card-title">Points du CSSE <small>(score mensuel)</small></h4>
+            <div class="text-center text-info">
+              <h1 class="display-3">{{ this.user.csse }}</h1>
+            </div>
+            <div class="stats">
+              <i class="fa fa-history"></i> Mis à jour maintenant
+            </div>
+          </card>
+          <card>
+            <h4 slot="header" class="card-title">Nombre de pas <small>(quotidien)</small></h4>
+            <div class="text-center text-danger">
+              <h1 class="display-3">{{ this.userSteps }}</h1>
+            </div>
+            <div class="stats">
+              <i class="fa fa-history"></i> Mis à jour maintenant
+            </div>
+          </card>
         </div>
       </div>
     </div>
@@ -110,6 +131,7 @@
   import UserLocalization from './UserProfile/UserLocalization.vue'
   import ChartCard from 'src/components/Cards/ChartCard.vue'
   import axios from "axios";
+  const delay = require('delay');
 
   export default {
     components: {
@@ -142,7 +164,14 @@
           bloodType: "N/A",
           bloodRhesus: "N/A",
           placeOfWork: "N/A",
-          companyName: "N/A"
+          companyName: "N/A",
+          csse: "N/A"
+        },
+        userSteps: "N/A",
+        userLocalisation: {
+          idPerson: "0",
+          latitude: 0,
+          longitude: 0
         },
         lineChart: {
           data: {
@@ -227,7 +256,7 @@
       }
     },
     methods: {
-      retrieveUser: function () {
+      retrieveUser: async function () {
         for(let usr of this.$parent.usersList) {
           if(usr.idPerson === this.$route.params.id) {
             this.user = usr;
@@ -236,7 +265,7 @@
         }
 
         if(this.user.nationalId === "N/A") {
-          axios.get("https://intensif06.ensicaen.fr/api/people/" + this.$route.params.id)
+          await axios.get("https://intensif06.ensicaen.fr/api/people/" + this.$route.params.id)
             .then((response) => {
               this.user = response.data;
             })
@@ -244,10 +273,51 @@
               console.log(errors);
             });
         }
+
+        axios.get("https://intensif06.ensicaen.fr/api/people/" + this.$route.params.id + "/steps")
+          .then((response) => {
+            this.userSteps = response.data;
+          })
+          .catch((errors) => {
+            console.log(errors);
+          });
+
+        axios.get("https://intensif06.ensicaen.fr/api/people/" + this.$route.params.id + "/localisation")
+          .then((response) => {
+            this.userLocalisation = response.data;
+          })
+          .catch((errors) => {
+            console.log(errors);
+          });
+      },
+      updateCSSE: async function () {
+        await delay(10000);
+        await axios.get("https://intensif06.ensicaen.fr/api/people/" + this.$route.params.id + "/csse")
+          .then((response) => {
+            this.user.csse = response.data;
+          })
+          .catch((errors) => {
+            console.log(errors);
+          });
+        await this.updateCSSE();
+      },
+      updateSteps: async function () {
+        await delay(10000);
+        await axios.get("https://intensif06.ensicaen.fr/api/people/" + this.$route.params.id + "/steps")
+          .then((response) => {
+            this.userSteps = response.data;
+          })
+          .catch((errors) => {
+            console.log(errors);
+          });
+        await this.updateCSSE();
       }
     },
-    mounted() {
-      this.retrieveUser();
+    async mounted() {
+      await this.retrieveUser();
+      this.updateCSSE();
+      this.updateSteps();
+
     }
   }
 

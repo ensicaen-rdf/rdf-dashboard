@@ -21,7 +21,7 @@
         </div>
         <div class="col-md-2">
           <base-input type="text"
-                      label="Taille"
+                      label="Taille (en cm)"
                       :disabled="true"
                       placeholder="Taille"
                       v-model="user.height">
@@ -29,7 +29,7 @@
         </div>
         <div class="col-md-2">
           <base-input type="text"
-                      label="Poids"
+                      label="Poids (en kg)"
                       :disabled="true"
                       placeholder="Poids"
                       v-model="user.weight">
